@@ -1,7 +1,8 @@
-import {Schema, model} from "mongoose";
+import { Schema, model, Types, Model } from "mongoose";
 
 // Interface representing a publisher (child documents) in MongoDB
 interface IPublisher {
+	_id: Types.ObjectId,
 	name: string,
 	url: string
 }
@@ -17,18 +18,11 @@ interface ICategory {
 	updatedAt: string
 }
 
-const publisherSchema = new Schema<IPublisher> ({
-	name: {
-		type: String,
-		required: true
-	},
-	url: {
-		type: String,
-		required: true
-	}
-});
+// TMethodsAndOverrides
+type ICategoryDocumentProps = { publishers: Types.DocumentArray<IPublisher> }
+type ICategoryModelType = Model<ICategory, {}, ICategoryDocumentProps>;
 
-const categorySchema =  new Schema<ICategory> ({
+const categorySchema = new Schema<ICategory, ICategoryModelType> ({
 	name: {
 		type: String,
 		required: true
@@ -45,7 +39,16 @@ const categorySchema =  new Schema<ICategory> ({
 		type: String,
 		required: true
 	},
-	publishers: [ publisherSchema ],
+	publishers: [new Schema<IPublisher> ({
+		name: {
+			type: String,
+			required: true
+		},
+		url: {
+			type: String,
+			required: true
+		}
+	})],
 },{ timestamps: true });
 
-module.exports = model<ICategory>('Category', categorySchema);
+module.exports = model<ICategory, ICategoryModelType>('Category', categorySchema);
