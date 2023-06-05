@@ -6,7 +6,7 @@ const config = require("../src/configs/db.configs");
 	try {
 		// Connect the client to the server
 		await mongoose.connect(`${config.uri}/`, { dbName: config.database });
-		console.log("Connection to Mongo DB server is successful!");
+		console.log("Connection to MongoDB started successfully!");
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);
 	}

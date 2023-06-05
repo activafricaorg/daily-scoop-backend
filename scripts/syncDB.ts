@@ -1,14 +1,14 @@
 require('../src/utils/env.util');
-const fs = require("fs/promises");
-const path = require("path");
-import mongoose, {connection} from "mongoose";
+import fs from "fs/promises"
+import mongoose from "mongoose";
+import path from "path"
 const config = require("../src/configs/db.configs");
 
 (async() => {
 	try {
 		// Connect the client to the server
 		await mongoose.connect(`${config.uri}/`, { dbName: config.database });
-		console.log("Connection to MongoDB started successful!");
+		console.log("Connection to MongoDB started successfully!");
 
 		fs.readdir(path.resolve("./src/models"))
 			.then((files: string[]) => {
