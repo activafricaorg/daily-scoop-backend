@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development npx nodemon",
+    "sync": "NODE_ENV=development npx ts-node scripts/syncDB.ts",
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node build/index.js"
   },

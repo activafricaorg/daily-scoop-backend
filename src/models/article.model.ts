@@ -1,7 +1,7 @@
 import { Schema, model, Types } from "mongoose";
 
 // Interface representing a content document in MongoDB
-interface IContent {
+interface IArticle {
 	_id: Types.ObjectId,
 	title: string,
 	url: string,
@@ -11,7 +11,7 @@ interface IContent {
 	updatedAt: string
 }
 
-const contentSchema = new Schema<IContent>({
+const articleSchema = new Schema<IArticle>({
 	title: {
 		type: String,
 		required: true
@@ -27,4 +27,4 @@ const contentSchema = new Schema<IContent>({
 	category: [ String ]
 },{ timestamps: true });
 
-module.exports = model<IContent>('Category', contentSchema);
+module.exports = model<IArticle>('Article', articleSchema);
