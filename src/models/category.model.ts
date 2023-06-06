@@ -51,4 +51,4 @@ const categorySchema = new Schema<ICategory, ICategoryModelType> ({
 	})],
 },{ timestamps: true });
 
-module.exports = model<ICategory, ICategoryModelType>('Category', categorySchema);
+export default model<ICategory, ICategoryModelType>('Category', categorySchema);

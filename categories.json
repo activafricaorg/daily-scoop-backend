@@ -1,0 +1,90 @@
+[
+	{
+		"name": "News",
+		"slug": "news",
+		"description": "Politics, business, breaking stories, finance and news in Africa sourced by Daily Scoop Africa",
+		"image": "https://img.icons8.com/ios/250/FFFFFF/chat.png",
+		"publishers": [
+			{
+				"name": "Punch Nigeria",
+				"url": "punchng.com"
+			},
+			{
+				"name": "Africa News",
+				"url": "africanews.com"
+			},
+			{
+				"name": "Guardian Nigeria",
+				"url": "guardian.ng"
+			},
+			{
+				"name": "Vanguard Nigeria",
+				"url": "vanguardngr.com/category/top-stories"
+			},
+			{
+				"name": "Premium Times",
+				"url": "premiumtimesng.com/category/news/headlines"
+			}
+		]
+	},
+	{
+		"name": "Tech",
+		"slug": "tech",
+		"description": "News and happenings around technology, startups, fintech, and venture capital investment in Africa sourced by Daily Scoop Africa",
+		"image": "https://img.icons8.com/ios/250/FFFFFF/rocket.png",
+		"publishers": [
+			{
+				"name": "TechCrunch Africa",
+				"url": "techcrunch.com/tag/africa"
+			},
+			{
+				"name": "TechCabal",
+				"url": "techcabal.com/category/startups"
+			},
+			{
+				"name": "Techpoint",
+				"url": "techpoint.africa"
+			},
+			{
+				"name": "Apps Africa",
+				"url": "appsafrica.com"
+			},
+			{
+				"name": "Rest of world",
+				"url": "restofworld.org"
+			}
+		]
+	},
+	{
+		"name": "Entertainment",
+		"slug": "entertainment",
+		"description": "Entertainment news, events, music, and movies in Africa sourced by Daily Scoop Africa",
+		"image": "https://img.icons8.com/ios/250/FFFFFF/champagne.png",
+		"publishers": [
+			{
+				"name": "Notjustok",
+				"url": "notjustok.com/category/songs"
+			},
+			{
+				"name": "Bella Naija",
+				"url": "bellanaija.com/event"
+			}
+		]
+	},
+	{
+		"name": "Sports",
+		"slug": "/sports",
+		"description": "Sport news, football transfer update sourced by Daily Scoop Africa",
+		"image": "https://img.icons8.com/ios/250/FFFFFF/football2.png",
+		"publishers": [
+			{
+				"name": "Notjustok",
+				"url": "notjustok.com/category/sports"
+			},
+			{
+				"name": "Complete Sports",
+				"url": "completesports.com/category/world-football"
+			}
+		]
+	}
+]

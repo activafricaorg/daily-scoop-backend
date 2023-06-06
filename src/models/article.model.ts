@@ -27,4 +27,4 @@ const articleSchema = new Schema<IArticle>({
 	category: [ String ]
 },{ timestamps: true });
 
-module.exports = model<IArticle>('Article', articleSchema);
+export default model<IArticle>('Article', articleSchema);
