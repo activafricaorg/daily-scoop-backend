@@ -2,7 +2,7 @@ require("../src/utils/env.util");
 const config = require("../src/configs/db.configs");
 import fs from "fs/promises";
 import mongoose from "mongoose";
-import Category from "../src/models/category.model";
+import CategoryModel from "../src/models/category.model";
 
 interface IRawPublisher {
 	name: string,
@@ -32,7 +32,7 @@ interface IRawCategory {
 	fs.readFile("./categories.json", "utf-8")
 		.then(async (categoriesJSON: string) => {
 			const categories: IRawCategory[] = JSON.parse(categoriesJSON);
-			Category.insertMany(categories)
+			CategoryModel.insertMany(categories)
 				.then(async() => {
 					console.log(`Successfully added bulk category document to category collection`);
 
