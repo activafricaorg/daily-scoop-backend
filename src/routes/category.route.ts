@@ -3,7 +3,7 @@ const router = express.Router();
 import CategoryModel from "../models/category.model";
 import ArticleModel from "../models/article.model";
 
-// GET all articles that matches a criteria in the query parameter
+// GET all categories that matches a criteria in the query parameter
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const filter: { title: string } | any = {};
 	if (req.query.q) {
@@ -16,7 +16,10 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		.select({ "_id": 0, "__v": 0})
 		.exec();
 
-	return res.json(result);
+	if (result.length >= 1) return res.json(result);
+	return res.status(404).json({
+		status: "No record found"
+	});
 });
 
 router.get("/:category", async (req: Request, res:Response): Promise<Response> => {

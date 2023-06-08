@@ -69,7 +69,7 @@
 	},
 	{
 		"name": "Sports",
-		"slug": "/sports",
+		"slug": "sports",
 		"description": "Sport news, football transfer update sourced by Daily Scoop Africa",
 		"image": "https://img.icons8.com/ios/250/FFFFFF/football2.png",
 		"publishers": [

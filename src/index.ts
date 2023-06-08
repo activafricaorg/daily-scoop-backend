@@ -3,6 +3,7 @@ import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import article from "../src/routes/article.route";
 import category from "../src/routes/category.route";
+import publisher from "../src/routes/publisher.route";
 const config = require("../src/configs/db.configs");
 
 // Express
@@ -10,8 +11,9 @@ const app: Express = express();
 const port = process.env.PORT || 4001;
 
 // Routes
-app.use("/articles", article);
-app.use("/categories", category);
+app.use("/article", article);
+app.use("/category", category);
+app.use("/publisher", publisher);
 
 (async() => {
 	try {
