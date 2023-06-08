@@ -6,7 +6,8 @@ interface IArticle {
 	title: string,
 	url: string,
 	image: string,
-	category: Types.Array<string>
+	category: string,
+	tags: Types.Array<string>
 	createdAt: string,
 	updatedAt: string
 }
@@ -18,13 +19,15 @@ const articleSchema = new Schema<IArticle>({
 	},
 	url: {
 		type: String,
+		unique: true,
 		required: true
 	},
 	image: {
 		type: String,
 		required: true
 	},
-	category: [ String ]
+	category: String,
+	tags: [ String ]
 },{ timestamps: true });
 
 export default model<IArticle>('Article', articleSchema);

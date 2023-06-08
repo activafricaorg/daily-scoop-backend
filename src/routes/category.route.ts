@@ -10,7 +10,11 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		filter.slug = { $regex: query };
 	}
 
-	const result = await CategoryModel.find(filter, null, {}).exec();
+	const result = await CategoryModel
+		.find(filter, null, {})
+		.select({ "_id": 0, "__v": 0})
+		.exec();
+
 	return res.json(result);
 });
 

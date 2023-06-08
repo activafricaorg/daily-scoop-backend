@@ -1,8 +1,8 @@
 require('./utils/env.util.ts');
 import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
-import articleRouter from "../src/routes/article.route";
-import categoryRouter from "../src/routes/category.route";
+import article from "../src/routes/article.route";
+import category from "../src/routes/category.route";
 const config = require("../src/configs/db.configs");
 
 // Express
@@ -10,8 +10,8 @@ const app: Express = express();
 const port = process.env.PORT || 4001;
 
 // Routes
-app.use("/articles", articleRouter);
-app.use("/categories", categoryRouter);
+app.use("/articles", article);
+app.use("/categories", category);
 
 (async() => {
 	try {

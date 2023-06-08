@@ -11,7 +11,7 @@ const config = require("../src/configs/db.configs");
 		console.log("Connection to MongoDB started successfully!");
 
 		fs.readdir(path.resolve("./src/models"))
-			.then((files: string[]) => {
+			.then(async (files: string[]) => {
 				if (files.length != 0) {
 					files
 						.filter((file: string) => {
@@ -27,7 +27,7 @@ const config = require("../src/configs/db.configs");
 									// Check if we are in final iteration
 									if (files.indexOf(file) == files.length - 1) {
 										await mongoose.connection.close();
-										console.log("Connection to MongoDB closed")
+										console.log("Connection to MongoDB closed");
 									}
 								})
 								.catch((err: Error) => {
@@ -36,12 +36,21 @@ const config = require("../src/configs/db.configs");
 						});
 				} else {
 					console.error(`Model directory is empty! -> ${files}`);
+
+					await mongoose.connection.close();
+					console.log("Connection to MongoDB closed");
 				}
 			})
-			.catch((err: Error) => {
-				console.error(`Cannot read model directory: ${err}`)
+			.catch(async (err: Error) => {
+				console.error(`Cannot read model directory: ${err}`);
+
+				await mongoose.connection.close();
+				console.log("Connection to MongoDB closed");
 			});
 	} catch (error: Error | any) {
 		console.error(`Unable to connect to database: ${error}`);
+
+		await mongoose.connection.close();
+		console.log("Connection to MongoDB closed");
 	}
 })();
