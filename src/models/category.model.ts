@@ -13,7 +13,7 @@ interface ICategory {
 	slug: string,
 	description: string,
 	image: string,
-	publishers: IPublisher[]
+	publishers: IPublisher[],
 	createdAt: string,
 	updatedAt: string
 }
