@@ -18,7 +18,10 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		filter.title = { $regex: query };
 	}
 
-	const result = await ArticleModel.find(filter, null, args).exec();
+	const result = await ArticleModel
+		.find(filter, null, args)
+		.select({ "_id": 0, "__v": 0})
+		.exec();
 	return res.json(result);
 });
 
