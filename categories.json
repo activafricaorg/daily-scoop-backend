@@ -7,19 +7,23 @@
 		"publishers": [
 			{
 				"name": "Punch Nigeria",
-				"url": "punchng.com"
+				"url": "punchng.com",
+				"image": "https://cdn.punchng.com/wp-content/uploads/2016/06/19220759/favicon.jpg"
 			},
 			{
 				"name": "Guardian Nigeria",
-				"url": "guardian.ng"
+				"url": "guardian.ng",
+				"image": "/images/guardian_icon.jpg"
 			},
 			{
 				"name": "Vanguard Nigeria",
-				"url": "vanguardngr.com/category/top-stories"
+				"url": "vanguardngr.com/category/top-stories",
+				"image": "/images/vanguard_icon.jpeg"
 			},
 			{
 				"name": "Premium Times",
-				"url": "premiumtimesng.com/category/news/headlines"
+				"url": "premiumtimesng.com/category/news/headlines",
+				"image": "/images/premium_times_icon.jpeg"
 			}
 		]
 	},
@@ -31,23 +35,28 @@
 		"publishers": [
 			{
 				"name": "TechCrunch Africa",
-				"url": "techcrunch.com/tag/africa"
+				"url": "techcrunch.com/tag/africa",
+				"image": "https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png"
 			},
 			{
 				"name": "TechCabal",
-				"url": "techcabal.com/category/startups"
+				"url": "techcabal.com/category/startups",
+				"image": "https://x7d4c5z5.stackpathcdn.com/wp-content/uploads/tc/2018/10/cropped-tcbig-180x180.png"
 			},
 			{
 				"name": "Techpoint",
-				"url": "techpoint.africa"
+				"url": "techpoint.africa",
+				"image": "https://techpoint.africa/wp-content/uploads/2021/03/cropped-techpoint-icon-150x150-1-180x180.png"
 			},
 			{
 				"name": "Apps Africa",
-				"url": "appsafrica.com"
+				"url": "appsafrica.com",
+				"image": "https://www.appsafrica.com/wp-content/uploads/2016/02/cropped-apps-africa-site-icon-180x180.png"
 			},
 			{
 				"name": "Rest of world",
-				"url": "restofworld.org"
+				"url": "restofworld.org",
+				"image": "https://restofworld.org/wp-content/themes/orbis/static-assets/media/favicon-32.png"
 			}
 		]
 	},
@@ -59,11 +68,13 @@
 		"publishers": [
 			{
 				"name": "Notjustok",
-				"url": "notjustok.com/category/songs"
+				"url": "notjustok.com/category/songs",
+				"image": "https://notjustok.com/wp-content/uploads/2022/10/cropped-njo-favicon-180x180.png"
 			},
 			{
 				"name": "Bella Naija",
-				"url": "bellanaija.com/event"
+				"url": "bellanaija.com/event",
+				"image": "https://www.bellanaija.com/logo-192.png"
 			}
 		]
 	},
@@ -75,11 +86,13 @@
 		"publishers": [
 			{
 				"name": "Notjustok",
-				"url": "notjustok.com/category/sports"
+				"url": "notjustok.com/category/sports",
+				"image": "https://notjustok.com/wp-content/uploads/2022/10/cropped-njo-favicon-180x180.png"
 			},
 			{
 				"name": "Complete Sports",
-				"url": "completesports.com/category/world-football"
+				"url": "completesports.com/category/world-football",
+				"image": "/images/complete_sports_icon.jpg"
 			}
 		]
 	}

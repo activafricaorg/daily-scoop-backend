@@ -31,7 +31,7 @@ const config = require("../src/configs/db.configs");
 									}
 								})
 								.catch((err: Error) => {
-									console.error(`Could not create collection -> ${err}`)
+									console.error(`Could not create collection -> ${err}`);
 								});
 						});
 				} else {

@@ -7,6 +7,7 @@ interface IArticle {
 	url: string,
 	image: string,
 	source: string,
+	sourceImage: string,
 	category: string,
 	tags: Types.Array<string>
 	createdAt: string,
@@ -28,6 +29,7 @@ const articleSchema = new Schema<IArticle>({
 		required: true
 	},
 	source: String,
+	sourceImage: String,
 	category: String,
 	tags: [ String ]
 },{ timestamps: true });

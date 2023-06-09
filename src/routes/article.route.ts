@@ -5,7 +5,7 @@ import ArticleModel from "../models/article.model";
 // GET all articles that matches a criteria in the query parameter
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const filter: { title: string } | any = {};
-	const per_page: any = req.query && req.query.count ? req.query.count : 24;
+	const per_page: any = req.query && req.query.count ? req.query.count : 48;
 	const page: any = req.query.page && req.query.page ? req.query.page : 1;
 	const args = {
 		limit: per_page,
@@ -22,6 +22,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		.find(filter, null, args)
 		.select({ "_id": 0, "__v": 0})
 		.exec();
+
 	return res.json(result);
 });
 

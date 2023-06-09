@@ -11,6 +11,7 @@ interface IArticle {
 	url: string | undefined,
 	image: string | undefined,
 	source: string,
+	sourceImage: string
 	category: string,
 	tags: string[] | undefined
 }
@@ -50,6 +51,7 @@ interface IArticle {
 							url: result.ogUrl,
 							image: result.ogImage ? result.ogImage[0].url : undefined,
 							source: publisher.name,
+							sourceImage: publisher.image,
 							category: category.name,
 							tags: item.categories
 						});

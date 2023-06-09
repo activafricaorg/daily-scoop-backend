@@ -4,7 +4,8 @@ import { Schema, model, Types, Model } from "mongoose";
 interface IPublisher {
 	_id: Types.ObjectId,
 	name: string,
-	url: string
+	url: string,
+	image: string
 }
 
 // Interface representing a category (parent documents) in MongoDB
@@ -45,6 +46,10 @@ const categorySchema = new Schema<ICategory, ICategoryModelType> ({
 			required: true
 		},
 		url: {
+			type: String,
+			required: true
+		},
+		image: {
 			type: String,
 			required: true
 		}
