@@ -42,7 +42,7 @@ const config = require("../src/configs/db.configs");
 				}
 			})
 			.catch(async (err: Error) => {
-				console.error(`Cannot read model directory: ${err}`);
+				console.error(`Error creating collection: ${err}`);
 
 				await mongoose.connection.close();
 				console.log("Connection to MongoDB closed");

@@ -7,13 +7,10 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const filter: { title: string } | any = {};
 	const per_page: any = req.query && req.query.count ? req.query.count : 48;
 	const page: any = req.query.page && req.query.page ? req.query.page : 1;
-	const args = {
-		limit: per_page,
-		skip: per_page * (page - 1),
-		sort: { updatedAt: -1 }
-	};
+	const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 
 	if (req.query.q) {
+		console.log(req.query.q);
 		const query = req.query.q;
 		filter.title = { $regex: query };
 	}

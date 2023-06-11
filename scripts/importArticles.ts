@@ -13,7 +13,8 @@ interface IArticle {
 	source: string,
 	sourceImage: string
 	category: string,
-	tags: string[] | undefined
+	tags: string[] | undefined,
+	articleDate: string | undefined
 }
 
 (async () => {
@@ -53,7 +54,8 @@ interface IArticle {
 							source: publisher.name,
 							sourceImage: publisher.image,
 							category: category.name,
-							tags: item.categories
+							tags: item.categories,
+							articleDate: item.isoDate
 						});
 					}
 

@@ -10,6 +10,7 @@ interface IArticle {
 	sourceImage: string,
 	category: string,
 	tags: Types.Array<string>
+	articleDate: string,
 	createdAt: string,
 	updatedAt: string
 }
@@ -31,7 +32,8 @@ const articleSchema = new Schema<IArticle>({
 	source: String,
 	sourceImage: String,
 	category: String,
-	tags: [ String ]
+	tags: [ String ],
+	articleDate: String
 },{ timestamps: true });
 
 export default model<IArticle>('Article', articleSchema);

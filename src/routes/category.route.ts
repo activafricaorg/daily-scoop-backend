@@ -32,10 +32,13 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 
 	if (result) {
 		const category: any = result;
+		const per_page: any = req.query && req.query.count ? req.query.count : 48;
+		const page: any = req.query.page && req.query.page ? req.query.page : 1;
+		const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 
 		// Get articles that match that category
 		 category.articles = await ArticleModel
-			.find({category: result.name}, null, {})
+			.find({category: result.name}, null, args)
 			.select({"_id": 0, "__v": 0})
 			.exec();
 
