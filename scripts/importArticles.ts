@@ -57,6 +57,8 @@ interface IArticle {
 							tags: item.categories,
 							articleDate: item.isoDate
 						});
+					} else {
+						continue;
 					}
 
 					if (
