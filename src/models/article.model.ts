@@ -1,21 +1,7 @@
-import { Schema, model, Types } from "mongoose";
+import {Schema, model} from "mongoose";
+import {ArticleTypes} from "../types/article";
 
-// Interface representing a content document in MongoDB
-interface IArticle {
-	_id: Types.ObjectId,
-	title: string,
-	url: string,
-	image: string,
-	source: string,
-	sourceImage: string,
-	category: string,
-	tags: Types.Array<string>
-	articleDate: string,
-	createdAt: string,
-	updatedAt: string
-}
-
-const articleSchema = new Schema<IArticle>({
+const articleSchema = new Schema<ArticleTypes>({
 	title: {
 		type: String,
 		required: true
@@ -30,10 +16,11 @@ const articleSchema = new Schema<IArticle>({
 		required: true
 	},
 	source: String,
+	description: String,
 	sourceImage: String,
 	category: String,
+	articleDate: String,
 	tags: [ String ],
-	articleDate: String
 },{ timestamps: true });
 
-export default model<IArticle>('Article', articleSchema);
+export default model<ArticleTypes>('Article', articleSchema);

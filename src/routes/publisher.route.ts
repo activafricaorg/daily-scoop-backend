@@ -3,7 +3,6 @@ import CategoryModel from "../models/category.model";
 import ArticleModel from "../models/article.model";
 const router = express.Router();
 
-// GET all publishers that matches a criteria in the query parameter
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const result = await CategoryModel
 		.find({}, null, {})

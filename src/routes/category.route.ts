@@ -3,7 +3,6 @@ const router = express.Router();
 import CategoryModel from "../models/category.model";
 import ArticleModel from "../models/article.model";
 
-// GET all categories that matches a criteria in the query parameter
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const filter: { title: string } | any = {};
 	if (req.query.q) {
@@ -23,7 +22,6 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 });
 
 router.get("/:category", async (req: Request, res:Response): Promise<Response> => {
-	// Get categories
 	const result = await CategoryModel
 		.findOne({ slug: req.params.category }, null, {})
 		.select({ "_id": 0, "__v": 0, "createdAt": 0, "updatedAt": 0})

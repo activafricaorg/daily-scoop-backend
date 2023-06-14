@@ -3,7 +3,6 @@ const router = express.Router();
 import ArticleModel from "../models/article.model";
 import CategoryModel from "../models/category.model";
 
-// GET all articles that matches a criteria in the query parameter
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	// Get categories
 	const result: any = await CategoryModel

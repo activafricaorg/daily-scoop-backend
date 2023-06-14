@@ -1,29 +1,8 @@
-import { Schema, model, Types, Model } from "mongoose";
+import {Schema, model} from "mongoose";
+import {CategoryTypes, CategoryModelTypes} from "../types/category";
+import {PublisherTypes} from "../types/publisher";
 
-// Interface representing a publisher (child documents) in MongoDB
-interface IPublisher {
-	_id: Types.ObjectId,
-	name: string,
-	url: string,
-	image: string
-}
-
-// Interface representing a category (parent documents) in MongoDB
-interface ICategory {
-	name: string,
-	slug: string,
-	description: string,
-	image: string,
-	publishers: IPublisher[],
-	createdAt: string,
-	updatedAt: string
-}
-
-// TMethodsAndOverrides
-type ICategoryDocumentProps = { publishers: Types.DocumentArray<IPublisher> }
-type ICategoryModelType = Model<ICategory, {}, ICategoryDocumentProps>;
-
-const categorySchema = new Schema<ICategory, ICategoryModelType> ({
+const categorySchema = new Schema<CategoryTypes, CategoryModelTypes> ({
 	name: {
 		type: String,
 		required: true
@@ -40,7 +19,7 @@ const categorySchema = new Schema<ICategory, ICategoryModelType> ({
 		type: String,
 		required: true
 	},
-	publishers: [new Schema<IPublisher> ({
+	publishers: [new Schema<PublisherTypes> ({
 		name: {
 			type: String,
 			required: true
@@ -56,4 +35,4 @@ const categorySchema = new Schema<ICategory, ICategoryModelType> ({
 	})],
 },{ timestamps: true });
 
-export default model<ICategory, ICategoryModelType>('Category', categorySchema);
+export default model<CategoryTypes, CategoryModelTypes>('Category', categorySchema);
