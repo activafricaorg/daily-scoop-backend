@@ -1,16 +1,16 @@
 import {Types} from "mongoose";
 
 export type ArticleTypes = {
-	_id: Types.ObjectId,
-	title: string,
-	url: string,
-	image: string,
+	_id?: Types.ObjectId,
+	title: string | undefined,
+	url: string | undefined,
+	image: string | undefined,
 	source: string,
-	description: string,
+	description: string | undefined,
 	sourceImage: string,
 	category: string,
-	articleDate: string,
-	tags: Types.Array<string>
-	createdAt: string,
-	updatedAt: string
+	articleDate: string | undefined,
+	tags: string[] | undefined,
+	createdAt?: string | undefined,
+	updatedAt?: string | undefined
 }

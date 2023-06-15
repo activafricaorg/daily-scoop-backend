@@ -1,3 +1,4 @@
+import {CategoryTypes} from "../types/category";
 import express, {Request, Response} from "express";
 const router = express.Router();
 import CategoryModel from "../models/category.model";
@@ -29,7 +30,7 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 		.exec();
 
 	if (result) {
-		const category: any = result;
+		const category: CategoryTypes = result;
 		const per_page: any = req.query && req.query.count ? req.query.count : 48;
 		const page: any = req.query.page && req.query.page ? req.query.page : 1;
 		const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};

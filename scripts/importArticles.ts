@@ -2,20 +2,10 @@ require("../src/utils/env.util");
 import ogs from "open-graph-scraper";
 import Parser from "rss-parser";
 import mongoose from "mongoose";
+import {ArticleTypes} from "../src/types/article";
 const config = require("../src/configs/db.configs");
 import ArticleModel from "../src/models/article.model";
 import CategoryModel from "../src/models/category.model";
-
-interface IArticle {
-	title: string | undefined,
-	url: string | undefined,
-	image: string | undefined,
-	source: string,
-	sourceImage: string
-	category: string,
-	tags: string[] | undefined,
-	articleDate: string | undefined
-}
 
 (async () => {
 	if (mongoose.connection.readyState == 0) {
@@ -35,7 +25,7 @@ interface IArticle {
 		.populate('publishers')
 		.exec();
 
-	const articles: IArticle[] = [];
+	const articles: ArticleTypes[] = [];
 	for (let category of categories) {
 		for (let publisher of category.publishers) {
 			const getRSS: Parser = new Parser();
@@ -48,8 +38,9 @@ interface IArticle {
 
 					if (result.success) {
 						articles.push({
-							title: result.ogTitle,
+							title: result?.ogTitle,
 							url: result.ogUrl,
+							description: result.ogDescription,
 							image: result.ogImage ? result.ogImage[0].url : undefined,
 							source: publisher.name,
 							sourceImage: publisher.image,

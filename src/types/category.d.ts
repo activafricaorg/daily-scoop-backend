@@ -1,5 +1,6 @@
-import {PublisherTypes} from "./publisher";
 import {Model, Types} from "mongoose";
+import {PublisherTypes} from "./publisher";
+import {ArticleTypes} from "./article";
 
 export type CategoryTypes = {
 	name: string,
@@ -7,6 +8,7 @@ export type CategoryTypes = {
 	description: string,
 	image: string,
 	publishers: PublisherTypes[],
+	articles?: ArticleTypes[]
 	createdAt: string,
 	updatedAt: string
 }
