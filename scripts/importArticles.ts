@@ -33,43 +33,47 @@ import CategoryModel from "../src/models/category.model";
 
 			for (let item of feed.items) {
 				if (item.link) {
-					console.log(`Processing article -> ${item.link} from ${publisher.name}`);
-					const { result } = await ogs({ url: item.link });
+					try {
+						console.log(`Processing article -> ${item.link} from ${publisher.name}`);
+						const { result } = await ogs({ url: item.link });
 
-					if (result.success) {
-						articles.push({
-							title: result?.ogTitle,
-							url: result.ogUrl,
-							description: result.ogDescription,
-							image: result.ogImage ? result.ogImage[0].url : undefined,
-							source: publisher.name,
-							sourceImage: publisher.image,
-							category: category.name,
-							tags: item.categories,
-							articleDate: item.isoDate
-						});
-					} else {
-						continue;
-					}
-
-					if (
-						feed.items.indexOf(item) == feed.items.length - 1
-						&& (category.publishers).indexOf(publisher) == (category.publishers).length - 1
-						&& categories.indexOf(category) == categories.length - 1
-					) {
-						ArticleModel.insertMany(articles)
-							.then(async() => {
-								console.log(`Successfully added available article documents`);
-
-								await mongoose.connection.close();
-								console.log("Connection to MongoDB closed");
-							})
-							.catch(async (err: Error) => {
-								console.error(`Error adding article documents -> ${err}`);
-
-								await mongoose.connection.close();
-								console.log("Connection to MongoDB closed");
+						if (result.success) {
+							articles.push({
+								title: result?.ogTitle,
+								url: result.ogUrl,
+								description: result.ogDescription,
+								image: result.ogImage ? result.ogImage[0].url : undefined,
+								source: publisher.name,
+								sourceImage: publisher.image,
+								category: category.name,
+								tags: item.categories,
+								articleDate: item.isoDate
 							});
+						} else {
+							continue;
+						}
+
+						if (
+							feed.items.indexOf(item) == feed.items.length - 1
+							&& (category.publishers).indexOf(publisher) == (category.publishers).length - 1
+							&& categories.indexOf(category) == categories.length - 1
+						) {
+							ArticleModel.insertMany(articles)
+								.then(async() => {
+									console.log(`Successfully added available article documents`);
+
+									await mongoose.connection.close();
+									console.log("Connection to MongoDB closed");
+								})
+								.catch(async (err: Error) => {
+									console.error(`Error adding article documents -> ${err}`);
+
+									await mongoose.connection.close();
+									console.log("Connection to MongoDB closed");
+								});
+						}
+					} catch(err) {
+						console.log(err);
 					}
 				}
 			}
