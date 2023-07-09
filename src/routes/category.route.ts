@@ -1,8 +1,8 @@
-import {CategoryTypes} from "../types/category";
-import express, {Request, Response} from "express";
-const router = express.Router();
+import { CategoryTypes } from "../types/category";
+import express, { Request, Response } from "express";
 import CategoryModel from "../models/category.model";
 import ArticleModel from "../models/article.model";
+const router = express.Router();
 
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const filter: { title: string } | any = {};
@@ -35,8 +35,7 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 		const page: any = req.query.page && req.query.page ? req.query.page : 1;
 		const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 
-		// Get articles that match that category
-		 category.articles = await ArticleModel
+		category.articles = await ArticleModel
 			.find({category: result.name}, null, args)
 			.select({"_id": 0, "__v": 0})
 			.exec();

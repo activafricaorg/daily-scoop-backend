@@ -1,5 +1,5 @@
 require('./utils/env.util.ts');
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import mongoose from "mongoose";
 import article from "../src/routes/article.route";
 import category from "../src/routes/category.route";

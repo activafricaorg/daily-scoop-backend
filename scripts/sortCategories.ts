@@ -1,10 +1,9 @@
-import {CategoryTypes} from "../src/types/category";
-
 require("../src/utils/env.util");
 import fs from "fs/promises";
 import mongoose from "mongoose";
-const config = require("../src/configs/db.configs");
+import { CategoryTypes } from "../src/types/category";
 import CategoryModel from "../src/models/category.model";
+const config = require("../src/configs/db.configs");
 
 (async () => {
 	if (mongoose.connection.readyState == 0) {

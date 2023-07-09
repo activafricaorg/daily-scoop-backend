@@ -1,5 +1,5 @@
-import {Schema, model} from "mongoose";
-import {ArticleTypes} from "../types/article";
+import { Schema, model } from "mongoose";
+import { ArticleTypes } from "../types/article";
 
 const articleSchema = new Schema<ArticleTypes>({
 	title: {

@@ -1,6 +1,6 @@
-import {Schema, model} from "mongoose";
-import {CategoryTypes, CategoryModelTypes} from "../types/category";
-import {PublisherTypes} from "../types/publisher";
+import { Schema, model } from "mongoose";
+import { CategoryTypes, CategoryModelTypes } from "../types/category";
+import { PublisherTypes } from "../types/publisher";
 
 const categorySchema = new Schema<CategoryTypes, CategoryModelTypes> ({
 	name: {

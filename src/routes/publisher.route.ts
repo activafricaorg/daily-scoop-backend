@@ -1,9 +1,9 @@
-import {PublisherTypes} from "../types/publisher";
-import {CategoryTypes} from "../types/category";
+import { PublisherTypes } from "../types/publisher";
+import { CategoryTypes } from "../types/category";
 import express, { Request, Response } from "express";
-const router = express.Router();
 import CategoryModel from "../models/category.model";
 import ArticleModel from "../models/article.model";
+const router = express.Router();
 
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const result: CategoryTypes[] = await CategoryModel
@@ -31,7 +31,6 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 			const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 
 			for (const publisher of publishers) {
-				// Get articles that match that category
 				publisher.articles = await ArticleModel
 					.find({source: matchedPublisher[0].name}, null, args)
 					.select({"_id": 0, "__v": 0})

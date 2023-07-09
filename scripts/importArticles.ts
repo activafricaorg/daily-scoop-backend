@@ -2,10 +2,10 @@ require("../src/utils/env.util");
 import ogs from "open-graph-scraper";
 import Parser from "rss-parser";
 import mongoose from "mongoose";
-import {ArticleTypes} from "../src/types/article";
-const config = require("../src/configs/db.configs");
+import { ArticleTypes } from "../src/types/article";
 import ArticleModel from "../src/models/article.model";
 import CategoryModel from "../src/models/category.model";
+const config = require("../src/configs/db.configs");
 
 (async () => {
 	if (mongoose.connection.readyState == 0) {
