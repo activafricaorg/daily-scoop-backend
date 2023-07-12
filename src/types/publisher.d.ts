@@ -5,6 +5,7 @@ export type PublisherTypes = {
 	_id: Types.ObjectId,
 	name: string,
 	url: string,
+	feed: string,
 	image: string,
 	articles?: ArticleTypes[]
 }

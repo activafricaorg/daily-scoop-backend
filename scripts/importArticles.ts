@@ -29,7 +29,7 @@ const config = require("../src/configs/db.configs");
 	for (let category of categories) {
 		for (let publisher of category.publishers) {
 			const getRSS: Parser = new Parser();
-			const feed = await getRSS.parseURL(`https://${publisher.url}/rss`);
+			const feed = await getRSS.parseURL(`https://${publisher.feed}`);
 
 			for (let item of feed.items) {
 				if (item.link) {

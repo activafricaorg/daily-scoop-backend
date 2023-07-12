@@ -1,97 +1,110 @@
 [
 	{
-		"name": "News",
+		"name": "news",
 		"slug": "news",
 		"description": "Politics, business, breaking stories, finance and news in Africa sourced by Daily Scoop Africa",
 		"image": "https://img.icons8.com/ios/250/FFFFFF/chat.png",
 		"publishers": [
 			{
-				"name": "Punch Nigeria",
+				"name": "punch nigeria",
 				"url": "punchng.com",
+				"feed": "punchng.com/rss",
 				"image": "https://cdn.punchng.com/wp-content/uploads/2016/06/19220759/favicon.jpg"
 			},
 			{
-				"name": "Guardian Nigeria",
+				"name": "guardian nigeria",
 				"url": "guardian.ng",
+				"feed": "guardian.ng/rss",
 				"image": "/images/guardian_icon.jpg"
 			},
 			{
-				"name": "Vanguard Nigeria",
+				"name": "vanguard nigeria",
 				"url": "vanguardngr.com/category/top-stories",
+				"feed": "vanguardngr.com/category/top-stories/rss",
 				"image": "/images/vanguard_icon.jpeg"
 			},
 			{
-				"name": "Premium Times",
+				"name": "premium times",
 				"url": "premiumtimesng.com/category/news/headlines",
+				"feed": "premiumtimesng.com/category/news/headlines/rss",
 				"image": "/images/premium_times_icon.jpeg"
 			}
 		]
 	},
 	{
-		"name": "Tech",
+		"name": "tech",
 		"slug": "tech",
 		"description": "News and happenings around technology, startups, fintech, and venture capital investment in Africa sourced by Daily Scoop Africa",
 		"image": "https://img.icons8.com/ios/250/FFFFFF/rocket.png",
 		"publishers": [
 			{
-				"name": "TechCrunch Africa",
+				"name": "techcrunch africa",
 				"url": "techcrunch.com/tag/africa",
+				"feed": "techcrunch.com/tag/africa/rss",
 				"image": "https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png"
 			},
 			{
-				"name": "TechCabal",
+				"name": "techcabal",
 				"url": "techcabal.com/category/startups",
+				"feed": "techcabal.com/category/startups/rss",
 				"image": "https://x7d4c5z5.stackpathcdn.com/wp-content/uploads/tc/2018/10/cropped-tcbig-180x180.png"
 			},
 			{
-				"name": "Techpoint",
+				"name": "techpoint",
 				"url": "techpoint.africa",
+				"feed": "techpoint.africa/rss",
 				"image": "https://techpoint.africa/wp-content/uploads/2021/03/cropped-techpoint-icon-150x150-1-180x180.png"
 			},
 			{
-				"name": "Apps Africa",
+				"name": "apps africa",
 				"url": "appsafrica.com",
+				"feed": "appsafrica.com/rss",
 				"image": "https://www.appsafrica.com/wp-content/uploads/2016/02/cropped-apps-africa-site-icon-180x180.png"
 			},
 			{
-				"name": "Rest of world",
+				"name": "rest of world",
 				"url": "restofworld.org",
+				"feed": "restofworld.org/rss",
 				"image": "https://restofworld.org/wp-content/themes/orbis/static-assets/media/favicon-32.png"
 			}
 		]
 	},
 	{
-		"name": "Entertainment",
+		"name": "entertainment",
 		"slug": "entertainment",
 		"description": "Entertainment news, events, music, and movies in Africa sourced by Daily Scoop Africa",
 		"image": "https://img.icons8.com/ios/250/FFFFFF/champagne.png",
 		"publishers": [
 			{
-				"name": "Notjustok",
-				"url": "notjustok.com/category/songs",
+				"name": "notjustok",
+				"url": "notjustok.com/category/news",
+				"feed": "notjustok.com/category/news/rss",
 				"image": "https://notjustok.com/wp-content/uploads/2022/10/cropped-njo-favicon-180x180.png"
 			},
 			{
-				"name": "Bella Naija",
-				"url": "bellanaija.com/event",
+				"name": "bella naija",
+				"url": "bellanaija.com/news",
+				"feed": "bellanaija.com/news/rss",
 				"image": "https://www.bellanaija.com/logo-192.png"
 			}
 		]
 	},
 	{
-		"name": "Sports",
+		"name": "sports",
 		"slug": "sports",
 		"description": "Sport news, football transfer update sourced by Daily Scoop Africa",
 		"image": "https://img.icons8.com/ios/250/FFFFFF/football2.png",
 		"publishers": [
 			{
-				"name": "Notjustok",
+				"name": "notjustok",
 				"url": "notjustok.com/category/sports",
+				"feed": "notjustok.com/category/sports/rss",
 				"image": "https://notjustok.com/wp-content/uploads/2022/10/cropped-njo-favicon-180x180.png"
 			},
 			{
-				"name": "Complete Sports",
+				"name": "complete sports",
 				"url": "completesports.com/category/world-football",
+				"feed": "completesports.com/category/world-football/rss",
 				"image": "/images/complete_sports_icon.jpg"
 			}
 		]

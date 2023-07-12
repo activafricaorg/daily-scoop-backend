@@ -24,7 +24,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 			});
 
 		if (matchedPublisher) {
-			const all = [];
+			const all: PublisherTypes[] = [];
 			const publishers: PublisherTypes[] = matchedPublisher;
 			const per_page: any = req.query && req.query.count ? req.query.count : 48;
 			const page: any = req.query.page && req.query.page ? req.query.page : 1;

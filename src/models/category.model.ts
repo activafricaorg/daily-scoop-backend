@@ -28,6 +28,10 @@ const categorySchema = new Schema<CategoryTypes, CategoryModelTypes> ({
 			type: String,
 			required: true
 		},
+		feed: {
+			type: String,
+			required: true
+		},
 		image: {
 			type: String,
 			required: true
