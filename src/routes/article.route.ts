@@ -1,8 +1,8 @@
 import {CategoryTypes} from "../types/category";
 import express, { Request, Response } from "express";
+const router = express.Router();
 import ArticleModel from "../models/article.model";
 import CategoryModel from "../models/category.model";
-const router = express.Router();
 
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const result: any = await CategoryModel
@@ -14,7 +14,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	if (result) {
 		const all: CategoryTypes[] = [];
 		const categories: CategoryTypes[] = result;
-		const per_page: any = req.query && req.query.count ? req.query.count : 9;
+		const per_page: any = req.query && req.query.count ? req.query.count : 48;
 		const args = {limit: per_page, sort: {articleDate: -1}};
 
 		for (const category of categories) {
