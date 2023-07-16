@@ -1,10 +1,10 @@
-require('./utils/env.util.ts');
+import "./utils/env.util";
 import express, { Express } from "express";
 import mongoose from "mongoose";
-import article from "../src/routes/article.route";
-import category from "../src/routes/category.route";
-import publisher from "../src/routes/publisher.route";
-const config = require("../src/configs/db.configs");
+import article from "./routes/article.route";
+import category from "./routes/category.route";
+import publisher from "./routes/publisher.route";
+const config = require("./configs/db.configs");
 
 // Express
 const app: Express = express();
@@ -14,6 +14,12 @@ const port = process.env.PORT || 4001;
 app.use("/article", article);
 app.use("/category", category);
 app.use("/publisher", publisher);
+
+app.get('/', (req, res) => {
+	res.json({
+		message: 'ok',
+	});
+});
 
 (async() => {
 	try {

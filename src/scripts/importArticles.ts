@@ -1,11 +1,11 @@
-require("../src/utils/env.util");
+import "../utils/env.util";
 import ogs from "open-graph-scraper";
 import Parser from "rss-parser";
 import mongoose from "mongoose";
-import { ArticleTypes } from "../src/types/article";
-import ArticleModel from "../src/models/article.model";
-import CategoryModel from "../src/models/category.model";
-const config = require("../src/configs/db.configs");
+import { ArticleTypes } from "../types/article";
+import ArticleModel from "../models/article.model";
+import CategoryModel from "../models/category.model";
+const config = require("../configs/db.configs");
 
 (async () => {
 	if (mongoose.connection.readyState == 0) {

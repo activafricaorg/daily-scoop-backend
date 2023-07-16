@@ -1,8 +1,8 @@
-require('../src/utils/env.util');
+import "../utils/env.util";
 import fs from "fs/promises"
 import mongoose from "mongoose";
 import path from "path"
-const config = require("../src/configs/db.configs");
+const config = require("../configs/db.configs");
 
 (async() => {
 	try {

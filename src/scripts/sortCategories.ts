@@ -1,9 +1,9 @@
-require("../src/utils/env.util");
+import "../utils/env.util";
 import fs from "fs/promises";
 import mongoose from "mongoose";
-import { CategoryTypes } from "../src/types/category";
-import CategoryModel from "../src/models/category.model";
-const config = require("../src/configs/db.configs");
+import { CategoryTypes } from "../types/category";
+import CategoryModel from "../models/category.model";
+const config = require("../configs/db.configs");
 
 (async () => {
 	if (mongoose.connection.readyState == 0) {

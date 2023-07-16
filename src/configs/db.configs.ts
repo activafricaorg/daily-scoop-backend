@@ -3,10 +3,10 @@
  * Author: https://github.com/omeiza
  */
 
-const env = process.env;
+// const env = process.env;
 module.exports = {
-	uri: env.MONGO_URI ?? "mongodb://localhost:27017",
-	user: env.MONGO_USER ?? "",
-	password: env.MONGO_PASSWORD ?? "",
-	database: env.MONGO_DB ?? "dailyScoop"
+	uri: process.env.MONGO_URI ?? "mongodb://localhost:27017",
+	user: process.env.MONGO_USER ?? "",
+	password: process.env.MONGO_PASSWORD ?? "",
+	database: process.env.MONGO_DB ?? "dailyScoop"
 }
