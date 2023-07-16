@@ -19,7 +19,7 @@ const config = require("../configs/db.configs");
 								&& (file.slice(-2) === "ts");
 						})
 						.forEach((file: string) => {
-							const Model = require(path.join("./models/", file));
+							const Model = require(path.join("../models/", file));
 							Model.createCollection()
 								.then(async () => {
 									console.log(`${file.split(".")[0]} collection created`);
