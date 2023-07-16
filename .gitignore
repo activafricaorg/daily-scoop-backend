@@ -1,5 +1,5 @@
 .idea
 node_modules
 build
-live.config.js
+src/live.config.js
 .env.*
