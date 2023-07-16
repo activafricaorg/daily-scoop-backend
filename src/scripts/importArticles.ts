@@ -58,7 +58,7 @@ const config = require("../configs/db.configs");
 							&& (category.publishers).indexOf(publisher) == (category.publishers).length - 1
 							&& categories.indexOf(category) == categories.length - 1
 						) {
-							ArticleModel.insertMany(articles)
+							ArticleModel.insertMany(articles, {ordered: false})
 								.then(async() => {
 									console.log(`Successfully added available article documents`);
 
