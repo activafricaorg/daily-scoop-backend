@@ -16,7 +16,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		.select({ "_id": 0, "__v": 0})
 		.exec();
 
-	if (result.length >= 1) return res.json(result);
+	if ( result && result.length >= 1) return res.json(result);
 	return res.status(404).json({
 		status: "No record found"
 	});
@@ -29,7 +29,7 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 		.lean()
 		.exec();
 
-	if (result) {
+	if (result && Object.keys(result).length > 0) {
 		const category: CategoryTypes = result;
 		const per_page: any = req.query && req.query.count ? req.query.count : 48;
 		const page: any = req.query.page && req.query.page ? req.query.page : 1;

@@ -11,7 +11,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		.lean()
 		.exec();
 
-	if (result) {
+	if (result && result.length > 0) {
 		const all: CategoryTypes[] = [];
 		const categories: CategoryTypes[] = result;
 		const per_page: any = req.query && req.query.count ? req.query.count : 48;
