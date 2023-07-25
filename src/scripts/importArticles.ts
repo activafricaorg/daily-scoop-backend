@@ -1,4 +1,4 @@
-import "../utils/env.util";
+// import "../utils/env.util";
 import ogs from "open-graph-scraper";
 import Parser from "rss-parser";
 import mongoose from "mongoose";
