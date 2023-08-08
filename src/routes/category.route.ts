@@ -31,7 +31,7 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 
 	if (result && Object.keys(result).length > 0) {
 		const category: CategoryTypes = result;
-		const per_page: any = req.query && req.query.count ? req.query.count : 48;
+		const per_page: any = req.query && req.query.count ? req.query.count : 24;
 		const page: any = req.query.page && req.query.page ? req.query.page : 1;
 		const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 

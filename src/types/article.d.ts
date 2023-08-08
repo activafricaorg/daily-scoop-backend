@@ -7,6 +7,7 @@ export type ArticleTypes = {
 	image: string | undefined,
 	source: string,
 	description: string | undefined,
+	related?: ArticleTypes[],
 	sourceImage: string,
 	category: string,
 	articleDate: string | undefined,

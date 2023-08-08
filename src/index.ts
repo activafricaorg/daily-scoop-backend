@@ -7,18 +7,17 @@ import category from "./routes/category.route";
 import publisher from "./routes/publisher.route";
 const config = require("./configs/db.configs");
 
-
 // Express
 const app: Express = express();
 const port = process.env.PORT || 4001;
+
+// Cors
+app.use(cors());
 
 // Routes
 app.use("/article", article);
 app.use("/category", category);
 app.use("/publisher", publisher);
-
-// Cors
-app.use(cors());
 
 app.get('/', (req, res) => {
 	res.json({
