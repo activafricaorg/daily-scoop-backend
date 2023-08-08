@@ -1,5 +1,5 @@
-// import "../utils/env.util";
 import ogs from "open-graph-scraper";
+import { slugifyText } from "../utils/helpers.util";
 import Parser from "rss-parser";
 import mongoose from "mongoose";
 import { ArticleTypes } from "../types/article";
@@ -39,11 +39,12 @@ const config = require("../configs/db.configs");
 
 						if (result.success) {
 							articles.push({
-								title: result?.ogTitle,
+								title: result.ogTitle,
 								url: result.ogUrl,
 								description: result.ogDescription,
 								image: result.ogImage ? result.ogImage[0].url : undefined,
 								source: publisher.name,
+								guid: result.ogTitle ? slugifyText(result.ogTitle): undefined,
 								sourceImage: publisher.image,
 								category: category.name,
 								tags: item.categories,
