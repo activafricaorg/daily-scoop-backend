@@ -1,4 +1,4 @@
-import {Types} from "mongoose";
+import { Types } from "mongoose";
 
 export type ArticleTypes = {
 	_id?: Types.ObjectId,

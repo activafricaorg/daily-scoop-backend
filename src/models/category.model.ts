@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import { CategoryTypes, CategoryModelTypes } from "../types/category";
 import { PublisherTypes } from "../types/publisher";
 
-const categorySchema = new Schema<CategoryTypes, CategoryModelTypes> ({
+const CategorySchema = new Schema<CategoryTypes, CategoryModelTypes> ({
 	name: {
 		type: String,
 		required: true
@@ -39,4 +39,4 @@ const categorySchema = new Schema<CategoryTypes, CategoryModelTypes> ({
 	})],
 },{ timestamps: true });
 
-export default model<CategoryTypes, CategoryModelTypes>('Category', categorySchema);
+export default model<CategoryTypes, CategoryModelTypes>('Category', CategorySchema);
