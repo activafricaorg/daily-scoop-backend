@@ -13,9 +13,7 @@ const app: Express = express();
 const port = process.env.PORT || 4001;
 
 // Cors
-app.use(cors({
-	origin: '*'
-}));
+app.use(cors());
 
 // Routes
 app.use("/article", article);
