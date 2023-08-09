@@ -9,24 +9,28 @@
 				"name": "punch nigeria",
 				"url": "punchng.com",
 				"feed": "punchng.com/rss",
+				"country": "nigeria",
 				"image": "https://cdn.punchng.com/wp-content/uploads/2016/06/19220759/favicon.jpg"
 			},
 			{
 				"name": "guardian nigeria",
 				"url": "guardian.ng",
 				"feed": "guardian.ng/rss",
+				"country": "nigeria",
 				"image": "/images/guardian_icon.jpg"
 			},
 			{
 				"name": "vanguard nigeria",
 				"url": "vanguardngr.com/category/top-stories",
 				"feed": "vanguardngr.com/category/top-stories/rss",
+				"country": "nigeria",
 				"image": "/images/vanguard_icon.jpeg"
 			},
 			{
 				"name": "premium times",
 				"url": "premiumtimesng.com/category/news/headlines",
 				"feed": "premiumtimesng.com/category/news/headlines/rss",
+				"country": "nigeria",
 				"image": "/images/premium_times_icon.jpeg"
 			}
 		]
@@ -41,30 +45,35 @@
 				"name": "techcrunch africa",
 				"url": "techcrunch.com/tag/africa",
 				"feed": "techcrunch.com/tag/africa/rss",
+				"country": "all",
 				"image": "https://techcrunch.com/wp-content/uploads/2015/02/cropped-cropped-favicon-gradient.png"
 			},
 			{
 				"name": "techcabal",
 				"url": "techcabal.com/category/startups",
 				"feed": "techcabal.com/category/startups/rss",
+				"country": "all",
 				"image": "https://x7d4c5z5.stackpathcdn.com/wp-content/uploads/tc/2018/10/cropped-tcbig-180x180.png"
 			},
 			{
 				"name": "techpoint",
 				"url": "techpoint.africa",
 				"feed": "techpoint.africa/rss",
+				"country": "all",
 				"image": "https://techpoint.africa/wp-content/uploads/2021/03/cropped-techpoint-icon-150x150-1-180x180.png"
 			},
 			{
 				"name": "apps africa",
 				"url": "appsafrica.com",
 				"feed": "appsafrica.com/rss",
+				"country": "all",
 				"image": "https://www.appsafrica.com/wp-content/uploads/2016/02/cropped-apps-africa-site-icon-180x180.png"
 			},
 			{
 				"name": "rest of world",
 				"url": "restofworld.org",
 				"feed": "restofworld.org/rss",
+				"country": "all",
 				"image": "https://restofworld.org/wp-content/themes/orbis/static-assets/media/favicon-32.png"
 			}
 		]
@@ -79,12 +88,14 @@
 				"name": "notjustok",
 				"url": "notjustok.com/category/news",
 				"feed": "notjustok.com/category/news/rss",
+				"country": "all",
 				"image": "https://notjustok.com/wp-content/uploads/2022/10/cropped-njo-favicon-180x180.png"
 			},
 			{
 				"name": "bella naija",
 				"url": "bellanaija.com/news",
 				"feed": "bellanaija.com/news/rss",
+				"country": "all",
 				"image": "https://www.bellanaija.com/logo-192.png"
 			}
 		]
@@ -99,12 +110,14 @@
 				"name": "notjustok",
 				"url": "notjustok.com/category/sports",
 				"feed": "notjustok.com/category/sports/rss",
+				"country": "all",
 				"image": "https://notjustok.com/wp-content/uploads/2022/10/cropped-njo-favicon-180x180.png"
 			},
 			{
 				"name": "complete sports",
 				"url": "completesports.com/category/world-football",
 				"feed": "completesports.com/category/world-football/rss",
+				"country": "all",
 				"image": "/images/complete_sports_icon.jpg"
 			}
 		]

@@ -32,6 +32,10 @@ const CategorySchema = new Schema<CategoryTypes, CategoryModelTypes> ({
 			type: String,
 			required: true
 		},
+		country: {
+			type: String,
+			required: true
+		},
 		image: {
 			type: String,
 			required: true

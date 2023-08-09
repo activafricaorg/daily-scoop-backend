@@ -38,6 +38,10 @@ const config = require("../configs/db.configs");
 						const { result } = await ogs({ url: item.link });
 
 						if (result.success) {
+							const lcCategories = item.categories?.map(category => {
+								return category.toLowerCase();
+							});
+
 							articles.push({
 								title: result.ogTitle,
 								url: result.ogUrl,
@@ -45,9 +49,9 @@ const config = require("../configs/db.configs");
 								image: result.ogImage ? result.ogImage[0].url : undefined,
 								source: publisher.name,
 								guid: result.ogTitle ? slugifyText(result.ogTitle): undefined,
-								sourceImage: publisher.image,
 								category: category.name,
-								tags: item.categories,
+								country: publisher.country,
+								tags: lcCategories,
 								articleDate: item.isoDate
 							});
 						} else {

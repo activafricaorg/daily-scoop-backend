@@ -18,8 +18,8 @@ const ArticleSchema = new Schema<ArticleTypes>({
 	guid: String,
 	source: String,
 	category: String,
+	country: String,
 	description: String,
-	sourceImage: String,
 	articleDate: String,
 	tags: [ String ],
 },{ timestamps: true });

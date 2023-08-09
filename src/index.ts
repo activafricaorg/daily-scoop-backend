@@ -5,6 +5,7 @@ import cors from 'cors';
 import article from "./routes/article.route";
 import category from "./routes/category.route";
 import publisher from "./routes/publisher.route";
+import topic from "./routes/topic.route";
 const config = require("./configs/db.configs");
 
 // Express
@@ -18,6 +19,7 @@ app.use(cors());
 app.use("/article", article);
 app.use("/category", category);
 app.use("/publisher", publisher);
+app.use("/topic", topic);
 
 app.get('/', (req, res) => {
 	res.json({

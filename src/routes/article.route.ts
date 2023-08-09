@@ -34,7 +34,8 @@ router.get("/:guid", async (req: Request, res: Response): Promise<Response> => {
 
 	if (result) {
 		result.related = await ArticleModel
-			.find({category: result.category}, null, args)
+			.find({ category: result.category }, null, args)
+			.where("guid").ne(req.params.guid)
 			.select({"_id": 0, "__v": 0})
 			.exec();
 

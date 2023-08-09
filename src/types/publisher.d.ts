@@ -6,6 +6,7 @@ export type PublisherTypes = {
 	name: string,
 	url: string,
 	feed: string,
+	country: string,
 	image: string,
 	articles?: ArticleTypes[]
 }
