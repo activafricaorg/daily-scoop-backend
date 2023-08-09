@@ -13,7 +13,9 @@ const app: Express = express();
 const port = process.env.PORT || 4001;
 
 // Cors
-app.use(cors({ origin: ["http://localhost:3000", "https://dailyscoop.africa"] }));
+app.use(cors({
+	origin: '*'
+}));
 
 // Routes
 app.use("/article", article);
