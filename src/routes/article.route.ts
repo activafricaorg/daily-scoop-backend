@@ -21,6 +21,22 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	});
 });
 
+router.get("/all", async (req: Request, res: Response): Promise<Response> => {
+	const result: ArticleTypes[] | null = await ArticleModel
+		.find({}, null, {})
+		.select({ "_id": 0, "__v": 0 })
+		.lean()
+		.exec();
+
+	if (result) {
+		return res.json(result);
+	}
+
+	return res.status(404).json({
+		status: "No record found"
+	});
+});
+
 router.get("/:guid", async (req: Request, res: Response): Promise<Response> => {
 	const per_page: any = req.query && req.query.count ? req.query.count : 24;
 	const page: any = req.query.page && req.query.page ? req.query.page : 1;
