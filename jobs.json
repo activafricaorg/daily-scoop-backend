@@ -1,0 +1,15 @@
+[
+	{
+		"name": "indeed",
+		"base": "https://ng.indeed.com",
+		"country": "nigeria",
+		"selectors": {
+			"jobItem": "#mosaic-provider-jobcards li",
+			"jobItemTitle": ".jobTitle a",
+			"jobItemLink": ".jobTitle a['href']",
+			"jobItemEmployer": ".companyName",
+			"jobLocation": ".companyLocation",
+			"jobAttributes": ".metadata .attribute_snippet"
+		}
+	}
+]
