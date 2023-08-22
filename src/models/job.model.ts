@@ -14,6 +14,7 @@ const JobSchema = new Schema<JobTypes>({
 	source: String,
 	employer: String,
 	location: String,
+	country: String,
 	attributes: [ String ]
 },{ timestamps: true });
 

@@ -7,6 +7,7 @@ export type JobTypes = {
 	source: string,
 	employer: string,
 	location: string,
+	country: string,
 	attributes: string[],
 	createdAt: string,
 	updatedAt: string

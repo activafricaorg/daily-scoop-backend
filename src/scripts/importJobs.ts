@@ -1,5 +1,7 @@
 import fs from "fs/promises";
-import mongoose, {connection} from "mongoose";
+import mongoose from "mongoose";
+import axios from 'axios';
+import * as cheerio from 'cheerio';
 import Jobs from "../models/job.model";
 const config = require("../configs/db.configs");
 
@@ -30,7 +32,7 @@ type jobSourceType = {
 			fs.readFile("./jobs.json", "utf-8")
 				.then(async (sourceJSON: string) => {
 					const jobSources: jobSourceType[] = JSON.parse(sourceJSON);
-					await processJobs(jobSources);
+					await processListing(jobSources);
 				});
 		} catch (error: Error | any) {
 			console.error("Unable to connect to database -> ", error);
@@ -38,7 +40,5 @@ type jobSourceType = {
 		}
 	}
 
-	const processJobs = async (jobSources: jobSourceType[]) => {
-
-	}
+	const processListing = async (jobSources: jobSourceType[]) => {}
 })();
