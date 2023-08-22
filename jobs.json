@@ -1,58 +1,9 @@
 [
 	{
 		"name": "indeed",
-		"base": "https://ng.indeed.com/jobs?q=&l=lagos",
+		"baseURL": "https://ng.indeed.com/jobs",
 		"country": "nigeria",
-		"location": "lagos",
-		"selectors": {
-			"jobItem": "#mosaic-provider-jobcards li",
-			"jobItemTitle": ".jobTitle a",
-			"jobItemLink": ".jobTitle a['href']",
-			"jobItemEmployer": ".companyName",
-			"jobLocation": ".companyLocation",
-			"jobAttributes": ".metadata .attribute_snippet"
-		}
-	},
-	{
-		"name": "indeed",
-		"base": "https://ng.indeed.com/jobs?q=&l=abuja",
-		"country": "nigeria",
-		"location": "abuja",
-		"selectors": {
-			"jobItem": "#mosaic-provider-jobcards li",
-			"jobItemTitle": ".jobTitle a",
-			"jobItemLink": ".jobTitle a['href']",
-			"jobItemEmployer": ".companyName",
-			"jobLocation": ".companyLocation",
-			"jobAttributes": ".metadata .attribute_snippet"
-		}
-	},
-	{
-		"name": "indeed",
-		"base": "https://ng.indeed.com/jobs?q=&l=port+harcourt",
-		"country": "nigeria",
-		"location": "port harcourt",
-		"selectors": {
-			"jobItem": "#mosaic-provider-jobcards li",
-			"jobItemTitle": ".jobTitle a",
-			"jobItemLink": ".jobTitle a['href']",
-			"jobItemEmployer": ".companyName",
-			"jobLocation": ".companyLocation",
-			"jobAttributes": ".metadata .attribute_snippet"
-		}
-	},
-	{
-		"name": "indeed",
-		"base": "https://ng.indeed.com/jobs?q=&l=ibadan",
-		"country": "nigeria",
-		"location": "ibadan",
-		"selectors": {
-			"jobItem": "#mosaic-provider-jobcards li",
-			"jobItemTitle": ".jobTitle a",
-			"jobItemLink": ".jobTitle a['href']",
-			"jobItemEmployer": ".companyName",
-			"jobLocation": ".companyLocation",
-			"jobAttributes": ".metadata .attribute_snippet"
-		}
+		"countryCode": "ng",
+		"locations": ["lagos", "abuja", "ibadan", "port harcourt"]
 	}
 ]

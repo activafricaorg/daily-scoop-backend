@@ -1,22 +1,15 @@
 import fs from "fs/promises";
 import mongoose from "mongoose";
-import axios from 'axios';
-import * as cheerio from 'cheerio';
 import Jobs from "../models/job.model";
+import { Indeed } from "../utils/scrapper.util";
 const config = require("../configs/db.configs");
 
 type jobSourceType = {
 	name: string,
-	base: string,
+	baseURL: string,
 	country: string,
-	selectors: {
-		jobItem: string,
-		jobItemTitle: string,
-		jobItemLink: string,
-		jobItemEmployer: string,
-		jobLocation: string,
-		jobAttributes: string
-	}
+	countryCode: string,
+	locations: string[]
 }
 
 (async () => {
@@ -40,5 +33,10 @@ type jobSourceType = {
 		}
 	}
 
-	const processListing = async (jobSources: jobSourceType[]) => {}
+	const processListing = async (jobSources: jobSourceType[]) => {
+		jobSources.map((jobSource: jobSourceType) => {
+			const scrapper = new Indeed();
+			scrapper.scrape(jobSource.locations, 10);
+		});
+	}
 })();

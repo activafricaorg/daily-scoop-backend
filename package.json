@@ -9,6 +9,7 @@
     "sync": "npx ts-node src/scripts/syncDB.ts",
     "category": "npx ts-node src/scripts/sortCategories.ts",
     "import": "npx ts-node src/scripts/importArticles.ts",
+    "importJobs": "npx ts-node src/scripts/importJobs.ts",
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node build/index.js"
   },
@@ -28,6 +29,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@types/cheerio": "^0.22.31",
     "axios": "^1.4.0",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
