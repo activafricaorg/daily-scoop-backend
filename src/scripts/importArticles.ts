@@ -65,10 +65,7 @@ const config = require("../configs/db.configs");
 						) {
 							ArticleModel.insertMany(articles, {ordered: false})
 								.then(async() => {
-									console.log(`Successfully added available article documents`);
 
-									await mongoose.connection.close();
-									console.log("Connection to MongoDB closed");
 								})
 								.catch(async (err: Error) => {
 									console.error(`Error adding article documents -> ${err}`);

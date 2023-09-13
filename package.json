@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development npx nodemon",
     "sync": "npx ts-node src/scripts/syncDB.ts",
+    "delete": "npx ts-node src/scripts/deleteNews.ts",
     "category": "npx ts-node src/scripts/sortCategories.ts",
     "import": "npx ts-node src/scripts/importArticles.ts",
     "importJobs": "npx ts-node src/scripts/importJobs.ts",
@@ -31,6 +32,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "moment": "^2.29.4",
     "mongoose": "^7.4.0",
     "open-graph-scraper": "^6.0.1",
     "rss-parser": "^3.13.0"
