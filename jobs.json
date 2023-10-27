@@ -1,9 +1,0 @@
-[
-	{
-		"name": "indeed",
-		"baseURL": "https://ng.indeed.com/jobs",
-		"country": "nigeria",
-		"countryCode": "ng",
-		"locations": ["lagos", "abuja", "ibadan", "port harcourt"]
-	}
-]

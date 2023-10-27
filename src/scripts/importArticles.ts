@@ -7,7 +7,12 @@ import ArticleModel from "../models/article.model";
 import CategoryModel from "../models/category.model";
 const config = require("../configs/db.configs");
 
-(async () => {
+// (async () => {
+//
+//
+// })();
+
+const importArticles = async () => {
 	if (mongoose.connection.readyState == 0) {
 		try {
 			// Connect the client to the server
@@ -81,4 +86,6 @@ const config = require("../configs/db.configs");
 			}
 		}
 	}
-})();
+}
+
+export default importArticles;

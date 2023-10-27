@@ -3,7 +3,7 @@ import moment from "moment";
 import ArticleModel from "../models/article.model";
 const config = require("../configs/db.configs");
 
-(async () => {
+const deleteNews = async () => {
 	if (mongoose.connection.readyState == 0) {
 		try {
 			// Connect the client to the server
@@ -26,4 +26,6 @@ const config = require("../configs/db.configs");
 		console.error('Unable to delete stale articles -> ', error);
 		process.exit();
 	}
-})();
+}
+
+export default deleteNews;

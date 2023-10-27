@@ -1,7 +1,10 @@
 import "./utils/env.util";
 import express, { Express } from "express";
 import mongoose from "mongoose";
+import cron from 'node-cron';
 import cors from 'cors';
+import deleteNews from "./scripts/deleteNews";
+import importArticles from "./scripts/importArticles";
 import article from "./routes/article.route";
 import category from "./routes/category.route";
 import publisher from "./routes/publisher.route";
@@ -25,6 +28,23 @@ app.get('/', (req, res) => {
 	res.json({
 		message: 'ok',
 	});
+});
+
+
+/**
+ * Cron job
+ * 1. Cron job to get articles from sources
+ * 2. Cron job to delete stale articles
+ */
+
+// 1. Cron job to get articles every 3 hours
+cron.schedule('0 */3 * * *', async () => {
+	await importArticles();
+});
+
+// 2. Cron job to delete stale articles every 12 hours
+cron.schedule('0 */12 * * *', async () => {
+	await deleteNews();
 });
 
 (async() => {
