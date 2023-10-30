@@ -20,8 +20,6 @@ const deleteNews = async () => {
 		const { deletedCount } = await ArticleModel.find({ createdAt: { $lte: older_than } }).deleteMany().exec();
 
 		console.log(`Successfully deleted ${deletedCount} stale news`);
-		await mongoose.connection.close();
-		console.log("Connection to MongoDB closed");
 	} catch(error: Error | any) {
 		console.error('Unable to delete stale articles -> ', error);
 		process.exit();

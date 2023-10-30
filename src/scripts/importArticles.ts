@@ -74,9 +74,6 @@ const importArticles = async () => {
 								})
 								.catch(async (err: Error) => {
 									console.error(`Error adding article documents -> ${err}`);
-
-									await mongoose.connection.close();
-									console.log("Connection to MongoDB closed");
 								});
 						}
 					} catch(err) {
