@@ -46,10 +46,6 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var article_model_1 = __importDefault(require("../models/article.model"));
 var category_model_1 = __importDefault(require("../models/category.model"));
 var config = require("../configs/db.configs");
-// (async () => {
-//
-//
-// })();
 var importArticles = function () { return __awaiter(void 0, void 0, void 0, function () {
     var error_1, categories, articles, _i, categories_1, category, _a, _b, publisher, getRSS, feed, _c, _d, item, result, lcCategories, err_1;
     var _e;
@@ -85,6 +81,7 @@ var importArticles = function () { return __awaiter(void 0, void 0, void 0, func
             case 6:
                 if (!(_i < categories_1.length)) return [3 /*break*/, 16];
                 category = categories_1[_i];
+                if (!(category.name !== 'tech')) return [3 /*break*/, 15];
                 _a = 0, _b = category.publishers;
                 _f.label = 7;
             case 7:
@@ -133,6 +130,7 @@ var importArticles = function () { return __awaiter(void 0, void 0, void 0, func
                     article_model_1.default.insertMany(articles, { ordered: false })
                         .then(function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
+                            console.error("Articles added");
                             return [2 /*return*/];
                         });
                     }); })
