@@ -91,34 +91,41 @@ var importArticles = function () { return __awaiter(void 0, void 0, void 0, func
                     }
                 });
                 Promise.allSettled(promises)
-                    .then(function (results) {
-                    results.forEach(function (result) {
-                        if (result.status === 'fulfilled') {
-                            var value = result.value;
-                            for (var _i = 0, _a = value.feed.items; _i < _a.length; _i++) {
-                                var item = _a[_i];
-                                var categories_1 = item.categories;
-                                var lcCategories = categories_1.map(function (category) { return category.toLowerCase(); });
-                                console.log("Processed article: ".concat(item.link, " from ").concat(value.publisher.name));
-                                articles.push({
-                                    title: item.title,
-                                    url: item.url,
-                                    description: undefined,
-                                    image: undefined,
-                                    source: value.publisher.name,
-                                    guid: item.title ? (0, helpers_util_1.slugifyText)(item.title) : undefined,
-                                    category: value.category.name,
-                                    country: value.publisher.country,
-                                    tags: lcCategories,
-                                    articleDate: item.isoDate
-                                });
+                    .then(function (results) { return __awaiter(void 0, void 0, void 0, function () {
+                    var _i, results_1, result, value, _a, _b, item, categories_1, lcCategories;
+                    return __generator(this, function (_c) {
+                        for (_i = 0, results_1 = results; _i < results_1.length; _i++) {
+                            result = results_1[_i];
+                            if (result.status === 'fulfilled') {
+                                value = result.value;
+                                for (_a = 0, _b = value.feed.items; _a < _b.length; _a++) {
+                                    item = _b[_a];
+                                    console.log("Processed article: ".concat(item.link, " from ").concat(value.publisher.name));
+                                    categories_1 = item.categories;
+                                    lcCategories = categories_1.map(function (category) { return category.toLowerCase(); });
+                                    // const { result } = await ogs({ url: item.link });
+                                    console.log("Processed article: ".concat(item.link, " from ").concat(value.publisher.name));
+                                    articles.push({
+                                        title: item.title,
+                                        url: item.link,
+                                        description: item.contentSnippet ? item.contentSnippet.split("\n")[0] : undefined,
+                                        image: undefined,
+                                        source: value.publisher.name,
+                                        guid: item.title ? (0, helpers_util_1.slugifyText)(item.title) : undefined,
+                                        category: value.category.name,
+                                        country: value.publisher.country,
+                                        tags: lcCategories,
+                                        articleDate: item.isoDate
+                                    });
+                                }
                             }
                         }
+                        return [2 /*return*/];
                     });
-                })
+                }); })
                     .then(function () {
                     article_model_1.default.insertMany(articles, { ordered: false })
-                        .then(function () {
+                        .then(function (result) {
                         console.error("All scrapped articles added");
                     })
                         .catch(function (err) {

@@ -1,6 +1,7 @@
 import Parser from "rss-parser";
 import { ArticleTypes } from "../types/article";
 import { CategoryTypes } from "../types/category";
+import ogs from "open-graph-scraper"
 import { slugifyText } from "../utils/helpers.util";
 import ArticleModel from "../models/article.model";
 import CategoryModel from "../models/category.model";
@@ -38,19 +39,21 @@ const importArticles = async () => {
 
 
 	Promise.allSettled(promises)
-		.then(results => {
-			results.forEach((result) => {
+		.then(async results => {
+			for (let result of results) {
 				if (result.status === 'fulfilled') {
 					const value = result.value;
 					for (let item of value.feed.items) {
+						console.log(`Processed article: ${item.link} from ${value.publisher.name}`);
+
 						const categories: string[] = item.categories;
 						const lcCategories = categories.map(category => category.toLowerCase());
 
 						console.log(`Processed article: ${item.link} from ${value.publisher.name}`);
 						articles.push({
 							title: item.title,
-							url: item.url,
-							description: undefined,
+							url: item.link,
+							description: item.contentSnippet ? item.contentSnippet.split("\n")[0] : undefined,
 							image: undefined,
 							source: value.publisher.name,
 							guid: item.title ? slugifyText(item.title): undefined,
@@ -61,12 +64,12 @@ const importArticles = async () => {
 						});
 					}
 				}
-			})
+			}
 		})
 		.then(() => {
 			ArticleModel.insertMany(articles, { ordered: false })
-				.then(() => {
-					console.error(`All scrapped articles added`);
+				.then((result) => {
+					console.log(`All scrapped articles added`);
 				})
 				.catch((err: Error) => {
 					console.error(`Error adding article documents -> ${err}`);

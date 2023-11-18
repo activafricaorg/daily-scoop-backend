@@ -12,8 +12,7 @@ const ArticleSchema = new Schema<ArticleTypes>({
 		required: true
 	},
 	image: {
-		type: String,
-		required: true
+		type: String
 	},
 	guid: String,
 	source: String,

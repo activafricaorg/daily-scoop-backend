@@ -41,17 +41,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var moment_1 = __importDefault(require("moment"));
 var article_model_1 = __importDefault(require("../models/article.model"));
-// const deleteNews = async() => {
-// 	try {
-// 		const older_than = moment().subtract(14, 'days').toDate();
-// 		const { deletedCount } = await ArticleModel.find({ createdAt: { $lte: older_than } }).deleteMany().exec();
-//
-// 		console.log(`Successfully deleted ${deletedCount} stale news`);
-// 	} catch(error: Error | any) {
-// 		console.error('Unable to delete stale articles: ', error);
-// 		process.exit();
-// 	}
-// }
 var deleteNews = function () {
     var promise = new Promise(function (resolve, reject) { return __awaiter(void 0, void 0, void 0, function () {
         var older_than, deletedCount;
