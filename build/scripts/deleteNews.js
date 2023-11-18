@@ -39,46 +39,36 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var mongoose_1 = __importDefault(require("mongoose"));
 var moment_1 = __importDefault(require("moment"));
 var article_model_1 = __importDefault(require("../models/article.model"));
-var config = require("../configs/db.configs");
-var deleteNews = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var error_1, older_than, deletedCount, error_2;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                if (!(mongoose_1.default.connection.readyState == 0)) return [3 /*break*/, 4];
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
-                // Connect the client to the server
-                return [4 /*yield*/, mongoose_1.default.connect("".concat(config.uri, "/"), { dbName: config.database })];
-            case 2:
-                // Connect the client to the server
-                _a.sent();
-                console.log("Connection to MongoDB started successfully!");
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _a.sent();
-                console.error('Unable to connect to database -> ', error_1);
-                process.exit();
-                return [3 /*break*/, 4];
-            case 4:
-                _a.trys.push([4, 6, , 7]);
-                older_than = (0, moment_1.default)().subtract(14, 'days').toDate();
-                return [4 /*yield*/, article_model_1.default.find({ createdAt: { $lte: older_than } }).deleteMany().exec()];
-            case 5:
-                deletedCount = (_a.sent()).deletedCount;
-                console.log("Successfully deleted ".concat(deletedCount, " stale news"));
-                return [3 /*break*/, 7];
-            case 6:
-                error_2 = _a.sent();
-                console.error('Unable to delete stale articles -> ', error_2);
-                process.exit();
-                return [3 /*break*/, 7];
-            case 7: return [2 /*return*/];
-        }
-    });
-}); };
+// const deleteNews = async() => {
+// 	try {
+// 		const older_than = moment().subtract(14, 'days').toDate();
+// 		const { deletedCount } = await ArticleModel.find({ createdAt: { $lte: older_than } }).deleteMany().exec();
+//
+// 		console.log(`Successfully deleted ${deletedCount} stale news`);
+// 	} catch(error: Error | any) {
+// 		console.error('Unable to delete stale articles: ', error);
+// 		process.exit();
+// 	}
+// }
+var deleteNews = function () {
+    var promise = new Promise(function (resolve, reject) { return __awaiter(void 0, void 0, void 0, function () {
+        var older_than, deletedCount;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    older_than = (0, moment_1.default)().subtract(14, 'days').toDate();
+                    return [4 /*yield*/, article_model_1.default.find({ createdAt: { $lte: older_than } }).deleteMany().exec()];
+                case 1:
+                    deletedCount = (_a.sent()).deletedCount;
+                    if (deletedCount)
+                        resolve(deletedCount);
+                    reject(new Error("Unable to delete stale articles"));
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+    promise.then(function (result) { console.log("Successfully deleted ".concat(result, " stale news")); }, function (error) { console.log(error); });
+};
 exports.default = deleteNews;

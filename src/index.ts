@@ -38,14 +38,14 @@ app.get('/', (req, res) => {
  */
 
 // 1. Cron job to get articles every 3 hours
-cron.schedule('* * * * *', async () => {
+cron.schedule('0 */3 * * *', async () => {
 	await importArticles();
 });
 
 // 2. Cron job to delete stale articles every 12 hours
-// cron.schedule('0 */12 * * *', async () => {
-// 	await deleteNews();
-// });
+cron.schedule('0 */12 * * *', async () => {
+	await deleteNews();
+});
 
 (async() => {
 	try {
