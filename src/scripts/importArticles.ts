@@ -1,7 +1,6 @@
 import Parser from "rss-parser";
 import { ArticleTypes } from "../types/article";
 import { CategoryTypes } from "../types/category";
-import ogs from "open-graph-scraper"
 import { slugifyText } from "../utils/helpers.util";
 import ArticleModel from "../models/article.model";
 import CategoryModel from "../models/category.model";
