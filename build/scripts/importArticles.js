@@ -103,7 +103,6 @@ var importArticles = function () { return __awaiter(void 0, void 0, void 0, func
                                     console.log("Processed article: ".concat(item.link, " from ").concat(value.publisher.name));
                                     categories_1 = item.categories;
                                     lcCategories = categories_1.map(function (category) { return category.toLowerCase(); });
-                                    // const { result } = await ogs({ url: item.link });
                                     console.log("Processed article: ".concat(item.link, " from ").concat(value.publisher.name));
                                     articles.push({
                                         title: item.title,
@@ -126,7 +125,7 @@ var importArticles = function () { return __awaiter(void 0, void 0, void 0, func
                     .then(function () {
                     article_model_1.default.insertMany(articles, { ordered: false })
                         .then(function (result) {
-                        console.error("All scrapped articles added");
+                        console.log("All scrapped articles added");
                     })
                         .catch(function (err) {
                         console.error("Error adding article documents -> ".concat(err));

@@ -30,35 +30,26 @@ app.get('/', (req, res) => {
 	});
 });
 
-
-/**
- * Cron job
- * 1. Cron job to get articles from sources
- * 2. Cron job to delete stale articles
- */
-
-// // 1. Cron job to get articles every 3 hours
-// cron.schedule('* * * * *', async () => {
-// 	await importArticles();
-// });
-//
-// // 2. Cron job to delete stale articles every 12 hours
-// cron.schedule('0 */12 * * *', async () => {
-// 	await deleteNews();
-// });
-
 (async() => {
 	try {
 		// Connect the client to the server
 		await mongoose.connect(`${config.uri}/`, { dbName: config.database });
 		console.log("Connection to MongoDB started successfully!");
 
-		await importArticles();
-
 		// Start application
 		app.listen(port, () => {
 			console.log(`Daily scoop web service currently running on port ${port}`);
-		})
+		});
+
+		// 1. Cron job to get articles every 3 hours
+		cron.schedule('0 */3 * * *', async () => {
+			await importArticles();
+		});
+
+		// 2. Cron job to delete stale articles every 12 hours
+		cron.schedule('0 */12 * * *', async () => {
+			await deleteNews();
+		});
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);
 	}
