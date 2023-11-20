@@ -9,6 +9,7 @@ import article from "./routes/article.route";
 import category from "./routes/category.route";
 import publisher from "./routes/publisher.route";
 import topic from "./routes/topic.route";
+import sortTopics from "./scripts/sortTopics";
 const config = require("./configs/db.configs");
 
 // Express
@@ -49,6 +50,11 @@ app.get('/', (req, res) => {
 		// 2. Cron job to delete stale articles every 12 hours
 		cron.schedule('0 */12 * * *', async () => {
 			await deleteNews();
+		});
+
+		// 3. Cron job to re-compile topics
+		cron.schedule('0 */4', async () => {
+			await sortTopics();
 		});
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);

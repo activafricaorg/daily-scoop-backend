@@ -80,14 +80,14 @@ var sortTopics = function () { return __awaiter(void 0, void 0, void 0, function
                             _loop_1(tag);
                         }
                     }
-                    topic_model_1.default.insertMany(topics, { ordered: false })
+                    // console.log(topics);
+                    topic_model_1.default.insertMany(topics, { ordered: true })
                         .then(function (result) {
                         console.log("Topics updated!");
                     })
                         .catch(function (err) {
                         console.error("Error setting up topics -> ".concat(err));
                     });
-                    console.log(topics);
                 }
                 return [2 /*return*/];
         }

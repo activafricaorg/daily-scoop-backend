@@ -76,25 +76,29 @@ app.get('/', function (req, res) {
                 // Connect the client to the server
                 _a.sent();
                 console.log("Connection to MongoDB started successfully!");
-                // // Start application
-                // app.listen(port, () => {
-                // 	console.log(`Daily scoop web service currently running on port ${port}`);
-                // });
-                //
+                // Start application
+                app.listen(port, function () {
+                    console.log("Daily scoop web service currently running on port ".concat(port));
+                });
                 // // 1. Cron job to get articles every 3 hours
                 // cron.schedule('0 */3 * * *', async () => {
                 // 	await importArticles();
+                // });
+                //
+                // // 2. Cron job to delete stale articles every 12 hours
+                // cron.schedule('0 */12 * * *', async () => {
+                // 	await deleteNews();
                 // });
                 return [4 /*yield*/, (0, sortTopics_1.default)()];
             case 2:
-                // // Start application
-                // app.listen(port, () => {
-                // 	console.log(`Daily scoop web service currently running on port ${port}`);
-                // });
-                //
                 // // 1. Cron job to get articles every 3 hours
                 // cron.schedule('0 */3 * * *', async () => {
                 // 	await importArticles();
+                // });
+                //
+                // // 2. Cron job to delete stale articles every 12 hours
+                // cron.schedule('0 */12 * * *', async () => {
+                // 	await deleteNews();
                 // });
                 _a.sent();
                 return [3 /*break*/, 4];

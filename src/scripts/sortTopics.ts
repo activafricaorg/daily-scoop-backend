@@ -34,6 +34,8 @@ const sortTopics = async () => {
 			}
 		}
 
+		// console.log(topics);
+
 		TopicModel.insertMany(topics, { ordered: false })
 			.then((result) => {
 				console.log(`Topics updated!`);
@@ -41,8 +43,6 @@ const sortTopics = async () => {
 			.catch((err: Error) => {
 				console.error(`Error setting up topics -> ${err}`);
 			});
-
-		// console.log(topics);
 	}
 }
 

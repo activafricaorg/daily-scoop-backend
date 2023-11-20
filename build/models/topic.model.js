@@ -4,6 +4,7 @@ var mongoose_1 = require("mongoose");
 var TopicSchema = new mongoose_1.Schema({
     name: {
         type: String,
+        unique: true,
         required: true
     },
     country: {
@@ -11,8 +12,7 @@ var TopicSchema = new mongoose_1.Schema({
         required: true
     },
     image: {
-        type: String,
-        unique: true,
+        type: String
     },
     articleCount: {
         type: Number,

@@ -4,6 +4,7 @@ import { TopicTypes } from "../types/topic";
 const TopicSchema = new Schema<TopicTypes>({
 	name: {
 		type: String,
+		unique: true,
 		required: true
 	},
 	country: {
@@ -11,8 +12,7 @@ const TopicSchema = new Schema<TopicTypes>({
 		required: true
 	},
 	image: {
-		type: String,
-		unique: true,
+		type: String
 	},
 	articleCount: {
 		type: Number,
