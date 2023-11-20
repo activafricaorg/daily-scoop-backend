@@ -50,7 +50,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
             case 0:
                 per_page = req.query && req.query.count ? req.query.count : 24;
                 page = req.query.page && req.query.page ? req.query.page : 1;
-                args = { limit: per_page, skip: per_page * (page - 1), sort: { updatedAt: -1 } };
+                args = { limit: per_page, skip: per_page * (page - 1), sort: { articleCount: -1 } };
                 return [4 /*yield*/, topic_model_1.default
                         .find({}, null, args)
                         .select({ "_id": 0, "__v": 0 })

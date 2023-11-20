@@ -42,7 +42,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("./utils/env.util");
 var express_1 = __importDefault(require("express"));
 var mongoose_1 = __importDefault(require("mongoose"));
+var node_cron_1 = __importDefault(require("node-cron"));
 var cors_1 = __importDefault(require("cors"));
+var deleteNews_1 = __importDefault(require("./scripts/deleteNews"));
+var importArticles_1 = __importDefault(require("./scripts/importArticles"));
 var article_route_1 = __importDefault(require("./routes/article.route"));
 var category_route_1 = __importDefault(require("./routes/category.route"));
 var publisher_route_1 = __importDefault(require("./routes/publisher.route"));
@@ -69,7 +72,7 @@ app.get('/', function (req, res) {
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, , 4]);
+                _a.trys.push([0, 2, , 3]);
                 // Connect the client to the server
                 return [4 /*yield*/, mongoose_1.default.connect("".concat(config.uri, "/"), { dbName: config.database })];
             case 1:
@@ -81,42 +84,44 @@ app.get('/', function (req, res) {
                     console.log("Daily scoop web service currently running on port ".concat(port));
                 });
                 // 1. Cron job to get articles every 3 hours
-                // cron.schedule('0 */3 * * *', async () => {
-                // 	await importArticles();
-                // });
-                //
-                // // 2. Cron job to delete stale articles every 12 hours
-                // cron.schedule('0 */12 * * *', async () => {
-                // 	await deleteNews();
-                // });
-                //
-                // // 3. Cron job to re-compile topics
-                // cron.schedule('0 */4', async () => {
-                // 	await sortTopics();
-                // });
-                return [4 /*yield*/, (0, sortTopics_1.default)()];
+                node_cron_1.default.schedule('0 */3 * * *', function () { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, (0, importArticles_1.default)()];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                // 2. Cron job to delete stale articles every 12 hours
+                node_cron_1.default.schedule('0 */12 * * *', function () { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, (0, deleteNews_1.default)()];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                // 3. Cron job to re-compile topics
+                node_cron_1.default.schedule('0 */4', function () { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, (0, sortTopics_1.default)()];
+                            case 1:
+                                _a.sent();
+                                return [2 /*return*/];
+                        }
+                    });
+                }); });
+                return [3 /*break*/, 3];
             case 2:
-                // 1. Cron job to get articles every 3 hours
-                // cron.schedule('0 */3 * * *', async () => {
-                // 	await importArticles();
-                // });
-                //
-                // // 2. Cron job to delete stale articles every 12 hours
-                // cron.schedule('0 */12 * * *', async () => {
-                // 	await deleteNews();
-                // });
-                //
-                // // 3. Cron job to re-compile topics
-                // cron.schedule('0 */4', async () => {
-                // 	await sortTopics();
-                // });
-                _a.sent();
-                return [3 /*break*/, 4];
-            case 3:
                 error_1 = _a.sent();
                 console.error('Unable to connect to database -> ', error_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
         }
     });
 }); })();
