@@ -8,7 +8,7 @@ import TopicModel from "../models/topic.model";
 router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	const per_page: any = req.query && req.query.count ? req.query.count : 24;
 	const page: any = req.query.page && req.query.page ? req.query.page : 1;
-	const args = { limit: per_page, skip: per_page * (page - 1), sort: { updatedAt: -1 }};
+	const args = { limit: per_page, skip: per_page * (page - 1), sort: { articleCount: -1 }};
 
 	const result: TopicTypes[] | null = await TopicModel
 		.find({}, null, args)
