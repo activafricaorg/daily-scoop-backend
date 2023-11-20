@@ -42,7 +42,7 @@ const sortTopics = async () => {
 				console.error(`Error setting up topics -> ${err}`);
 			});
 
-		console.log(topics);
+		// console.log(topics);
 	}
 }
 

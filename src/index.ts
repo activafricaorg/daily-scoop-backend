@@ -9,7 +9,6 @@ import article from "./routes/article.route";
 import category from "./routes/category.route";
 import publisher from "./routes/publisher.route";
 import topic from "./routes/topic.route";
-import sortTopics from "./scripts/sortTopics";
 const config = require("./configs/db.configs");
 
 // Express
@@ -37,22 +36,20 @@ app.get('/', (req, res) => {
 		await mongoose.connect(`${config.uri}/`, { dbName: config.database });
 		console.log("Connection to MongoDB started successfully!");
 
-		// // Start application
-		// app.listen(port, () => {
-		// 	console.log(`Daily scoop web service currently running on port ${port}`);
-		// });
-		//
-		// // 1. Cron job to get articles every 3 hours
-		// cron.schedule('0 */3 * * *', async () => {
-		// 	await importArticles();
-		// });
+		// Start application
+		app.listen(port, () => {
+			console.log(`Daily scoop web service currently running on port ${port}`);
+		});
 
-		await sortTopics();
+		// 1. Cron job to get articles every 3 hours
+		cron.schedule('0 */3 * * *', async () => {
+			await importArticles();
+		});
 
-		// // 2. Cron job to delete stale articles every 12 hours
-		// cron.schedule('0 */12 * * *', async () => {
-		// 	await deleteNews();
-		// });
+		// 2. Cron job to delete stale articles every 12 hours
+		cron.schedule('0 */12 * * *', async () => {
+			await deleteNews();
+		});
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);
 	}
