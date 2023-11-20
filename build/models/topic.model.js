@@ -6,10 +6,13 @@ var TopicSchema = new mongoose_1.Schema({
         type: String,
         required: true
     },
-    url: {
+    country: {
+        type: String,
+        required: true
+    },
+    image: {
         type: String,
         unique: true,
-        required: true
     },
     articleCount: {
         type: Number,

@@ -42,6 +42,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var router = express_1.default.Router();
 var article_model_1 = __importDefault(require("../models/article.model"));
+var topic_model_1 = __importDefault(require("../models/topic.model"));
+router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var per_page, page, args, result;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                per_page = req.query && req.query.count ? req.query.count : 24;
+                page = req.query.page && req.query.page ? req.query.page : 1;
+                args = { limit: per_page, skip: per_page * (page - 1), sort: { updatedAt: -1 } };
+                return [4 /*yield*/, topic_model_1.default
+                        .find({}, null, args)
+                        .select({ "_id": 0, "__v": 0 })
+                        .lean()
+                        .exec()];
+            case 1:
+                result = _a.sent();
+                if (result)
+                    return [2 /*return*/, res.json(result)];
+                return [2 /*return*/, res.status(404).json({
+                        status: "No record found"
+                    })];
+        }
+    });
+}); });
 router.get("/:slug", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var per_page, page, args, filter, tagArray, result;
     return __generator(this, function (_a) {

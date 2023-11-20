@@ -39,70 +39,58 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-require("./utils/env.util");
-var express_1 = __importDefault(require("express"));
-var mongoose_1 = __importDefault(require("mongoose"));
-var cors_1 = __importDefault(require("cors"));
-var article_route_1 = __importDefault(require("./routes/article.route"));
-var category_route_1 = __importDefault(require("./routes/category.route"));
-var publisher_route_1 = __importDefault(require("./routes/publisher.route"));
-var topic_route_1 = __importDefault(require("./routes/topic.route"));
-var sortTopics_1 = __importDefault(require("./scripts/sortTopics"));
-var config = require("./configs/db.configs");
-// Express
-var app = (0, express_1.default)();
-var port = process.env.PORT || 4001;
-// Cors
-app.use((0, cors_1.default)());
-// Routes
-app.use("/article", article_route_1.default);
-app.use("/category", category_route_1.default);
-app.use("/publisher", publisher_route_1.default);
-app.use("/topic", topic_route_1.default);
-app.get('/', function (req, res) {
-    res.json({
-        message: 'ok',
-    });
-});
-(function () { return __awaiter(void 0, void 0, void 0, function () {
-    var error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 3, , 4]);
-                // Connect the client to the server
-                return [4 /*yield*/, mongoose_1.default.connect("".concat(config.uri, "/"), { dbName: config.database })];
+var article_model_1 = __importDefault(require("../models/article.model"));
+var topic_model_1 = __importDefault(require("../models/topic.model"));
+var sortTopics = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var articles, topics, _i, articles_1, article, _loop_1, _a, _b, tag;
+    return __generator(this, function (_c) {
+        switch (_c.label) {
+            case 0: return [4 /*yield*/, topic_model_1.default.deleteMany({})];
             case 1:
-                // Connect the client to the server
-                _a.sent();
-                console.log("Connection to MongoDB started successfully!");
-                // // Start application
-                // app.listen(port, () => {
-                // 	console.log(`Daily scoop web service currently running on port ${port}`);
-                // });
-                //
-                // // 1. Cron job to get articles every 3 hours
-                // cron.schedule('0 */3 * * *', async () => {
-                // 	await importArticles();
-                // });
-                return [4 /*yield*/, (0, sortTopics_1.default)()];
+                _c.sent();
+                return [4 /*yield*/, article_model_1.default
+                        .find({}, null, {})
+                        .select({ "_id": 0, "__v": 0 })
+                        .lean()
+                        .exec()];
             case 2:
-                // // Start application
-                // app.listen(port, () => {
-                // 	console.log(`Daily scoop web service currently running on port ${port}`);
-                // });
-                //
-                // // 1. Cron job to get articles every 3 hours
-                // cron.schedule('0 */3 * * *', async () => {
-                // 	await importArticles();
-                // });
-                _a.sent();
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _a.sent();
-                console.error('Unable to connect to database -> ', error_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
+                articles = _c.sent();
+                if (articles) {
+                    topics = [];
+                    for (_i = 0, articles_1 = articles; _i < articles_1.length; _i++) {
+                        article = articles_1[_i];
+                        _loop_1 = function (tag) {
+                            var found = topics.find(function (topic) { return topic.name === tag; });
+                            var temp = [];
+                            if (found) {
+                                var index = topics.findIndex((function (topic) { return topic.name === tag; }));
+                                topics[index].articleCount++;
+                            }
+                            else {
+                                temp.push({
+                                    name: tag,
+                                    country: article.country,
+                                    articleCount: 1
+                                });
+                            }
+                            topics = topics.concat(temp);
+                        };
+                        for (_a = 0, _b = article.tags; _a < _b.length; _a++) {
+                            tag = _b[_a];
+                            _loop_1(tag);
+                        }
+                    }
+                    topic_model_1.default.insertMany(topics, { ordered: false })
+                        .then(function (result) {
+                        console.log("Topics updated!");
+                    })
+                        .catch(function (err) {
+                        console.error("Error setting up topics -> ".concat(err));
+                    });
+                    console.log(topics);
+                }
+                return [2 /*return*/];
         }
     });
-}); })();
+}); };
+exports.default = sortTopics;

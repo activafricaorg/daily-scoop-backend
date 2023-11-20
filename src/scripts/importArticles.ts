@@ -36,7 +36,6 @@ const importArticles = async () => {
 			}
 		});
 
-
 	Promise.allSettled(promises)
 		.then(async results => {
 			for (let result of results) {

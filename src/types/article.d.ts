@@ -12,7 +12,7 @@ export type ArticleTypes = {
 	category: string,
 	country: string | null,
 	articleDate: string | undefined,
-	tags: string[] | undefined,
+	tags: string[],
 	createdAt?: string | undefined,
 	updatedAt?: string | undefined
 }

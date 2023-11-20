@@ -1,7 +1,26 @@
 import express, { Request, Response } from "express";
 import { ArticleTypes } from "../types/article";
+import { TopicTypes } from "../types/topic";
 const router = express.Router();
 import ArticleModel from "../models/article.model";
+import TopicModel from "../models/topic.model";
+
+router.get("/", async (req: Request, res: Response): Promise<Response> => {
+	const per_page: any = req.query && req.query.count ? req.query.count : 24;
+	const page: any = req.query.page && req.query.page ? req.query.page : 1;
+	const args = { limit: per_page, skip: per_page * (page - 1), sort: { updatedAt: -1 }};
+
+	const result: TopicTypes[] | null = await TopicModel
+		.find({}, null, args)
+		.select({ "_id": 0, "__v": 0 })
+		.lean()
+		.exec();
+
+	if (result) return res.json(result);
+	return res.status(404).json({
+		status: "No record found"
+	});
+});
 
 router.get("/:slug", async (req: Request, res: Response): Promise<Response> => {
 	const per_page: any = req.query && req.query.count ? req.query.count : 24;
