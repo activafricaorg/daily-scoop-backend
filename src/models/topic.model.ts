@@ -11,9 +11,6 @@ const TopicSchema = new Schema<TopicTypes>({
 		type: String,
 		required: true
 	},
-	image: {
-		type: String
-	},
 	articleCount: {
 		type: Number,
 		required: true,

@@ -81,7 +81,7 @@ var sortTopics = function () { return __awaiter(void 0, void 0, void 0, function
                         }
                     }
                     // console.log(topics);
-                    topic_model_1.default.insertMany(topics, { ordered: true })
+                    topic_model_1.default.insertMany(topics, { ordered: false })
                         .then(function (result) {
                         console.log("Topics updated!");
                     })

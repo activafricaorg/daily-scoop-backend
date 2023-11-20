@@ -80,7 +80,7 @@ app.get('/', function (req, res) {
                 app.listen(port, function () {
                     console.log("Daily scoop web service currently running on port ".concat(port));
                 });
-                // // 1. Cron job to get articles every 3 hours
+                // 1. Cron job to get articles every 3 hours
                 // cron.schedule('0 */3 * * *', async () => {
                 // 	await importArticles();
                 // });
@@ -88,10 +88,15 @@ app.get('/', function (req, res) {
                 // // 2. Cron job to delete stale articles every 12 hours
                 // cron.schedule('0 */12 * * *', async () => {
                 // 	await deleteNews();
+                // });
+                //
+                // // 3. Cron job to re-compile topics
+                // cron.schedule('0 */4', async () => {
+                // 	await sortTopics();
                 // });
                 return [4 /*yield*/, (0, sortTopics_1.default)()];
             case 2:
-                // // 1. Cron job to get articles every 3 hours
+                // 1. Cron job to get articles every 3 hours
                 // cron.schedule('0 */3 * * *', async () => {
                 // 	await importArticles();
                 // });
@@ -99,6 +104,11 @@ app.get('/', function (req, res) {
                 // // 2. Cron job to delete stale articles every 12 hours
                 // cron.schedule('0 */12 * * *', async () => {
                 // 	await deleteNews();
+                // });
+                //
+                // // 3. Cron job to re-compile topics
+                // cron.schedule('0 */4', async () => {
+                // 	await sortTopics();
                 // });
                 _a.sent();
                 return [3 /*break*/, 4];
