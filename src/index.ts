@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 		});
 
 		// 1. Cron job to get articles every 3 hours
-		cron.schedule('0 */3 * * *', async () => {
+		cron.schedule('0 */1 * * *', async () => {
 			await importArticles();
 		});
 
@@ -53,7 +53,7 @@ app.get('/', (req, res) => {
 		});
 
 		// 3. Cron job to re-compile topics
-		cron.schedule('0 */4', async () => {
+		cron.schedule('*/25 * * * *', async () => {
 			await sortTopics();
 		});
 	} catch (error: Error | any) {

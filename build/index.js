@@ -84,7 +84,7 @@ app.get('/', function (req, res) {
                     console.log("Daily scoop web service currently running on port ".concat(port));
                 });
                 // 1. Cron job to get articles every 3 hours
-                node_cron_1.default.schedule('0 */3 * * *', function () { return __awaiter(void 0, void 0, void 0, function () {
+                node_cron_1.default.schedule('0 */1 * * *', function () { return __awaiter(void 0, void 0, void 0, function () {
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0: return [4 /*yield*/, (0, importArticles_1.default)()];
@@ -106,7 +106,7 @@ app.get('/', function (req, res) {
                     });
                 }); });
                 // 3. Cron job to re-compile topics
-                node_cron_1.default.schedule('0 */4', function () { return __awaiter(void 0, void 0, void 0, function () {
+                node_cron_1.default.schedule('*/25 * * * *', function () { return __awaiter(void 0, void 0, void 0, function () {
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0: return [4 /*yield*/, (0, sortTopics_1.default)()];
