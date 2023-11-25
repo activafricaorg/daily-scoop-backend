@@ -48,7 +48,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		});
 	}
 
-	if (publishers.length >= 1) return res.json(publishers);
+	if (publishers && publishers.length > 0) return res.json(publishers);
 	return res.status(404).json({
 		status: "No record found"
 	});

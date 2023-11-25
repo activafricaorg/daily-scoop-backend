@@ -32,6 +32,76 @@
 				"feed": "premiumtimesng.com/category/news/headlines/rss",
 				"country": "nigeria",
 				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "nation africa",
+				"url": "nation.africa/kenya",
+				"feed": "nation.africa/kenya/rss.xml",
+				"country": "kenya",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "KBC",
+				"url": "kbc.co.ke/category/news",
+				"feed": "kbc.co.ke/category/news/feed/",
+				"country": "kenya",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "kbc",
+				"url": "kbc.co.ke/category/news",
+				"feed": "kbc.co.ke/category/news/feed/",
+				"country": "kenya",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "daily news egypt",
+				"url": "dailynewsegypt.com/category/politics",
+				"feed": "dailynewsegypt.com/category/politics/feed/",
+				"country": "egypt",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "egyptian streets",
+				"url": "egyptianstreets.com/category/politics-and-society",
+				"feed": "egyptianstreets.com/category/politics-and-society/feed/",
+				"country": "egypt",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "daily maverick",
+				"url": "dailymaverick.co.za/section/maverick-news",
+				"feed": "dailymaverick.co.za/section/maverick-news/feed/",
+				"country": "south-africa",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "news24",
+				"url": "news24.com/news24/topstories",
+				"feed": "feeds.capi24.com/v1/Search/articles/news24/topstories/rss",
+				"country": "south-africa",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "news24",
+				"url": "news24.com/news24/topstories",
+				"feed": "feeds.capi24.com/v1/Search/articles/news24/topstories/rss",
+				"country": "south-africa",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "brownGH",
+				"url": "browngh.com/news/",
+				"feed": "browngh.com/news/feed/",
+				"country": "ghana",
+				"image": "/images/premium_times_icon.jpeg"
+			},
+			{
+				"name": "ghanaian times",
+				"url": "ghanaiantimes.com.gh/category/news/",
+				"feed": "ghanaiantimes.com.gh/category/news/feed/",
+				"country": "ghana",
+				"image": "/images/premium_times_icon.jpeg"
 			}
 		]
 	},
@@ -73,6 +143,13 @@
 				"name": "rest of world",
 				"url": "restofworld.org",
 				"feed": "restofworld.org/rss",
+				"country": "all",
+				"image": "https://restofworld.org/wp-content/themes/orbis/static-assets/media/favicon-32.png"
+			},
+			{
+				"name": "tech central",
+				"url": "techcentral.co.za",
+				"feed": "techcentral.co.za/feed",
 				"country": "all",
 				"image": "https://restofworld.org/wp-content/themes/orbis/static-assets/media/favicon-32.png"
 			}
@@ -118,6 +195,34 @@
 				"url": "completesports.com/category/world-football",
 				"feed": "completesports.com/category/world-football/rss",
 				"country": "all",
+				"image": "/images/complete_sports_icon.jpg"
+			},
+			{
+				"name": "daily news egypt",
+				"url": "dailynewsegypt.com/category/sports",
+				"feed": "dailynewsegypt.com/category/sports/feed/",
+				"country": "all",
+				"image": "/images/complete_sports_icon.jpg"
+			},
+			{
+				"name": "ghanaian times",
+				"url": "ghanaiantimes.com.gh/category/local-sports",
+				"feed": "ghanaiantimes.com.gh/category/local-sports/feed/",
+				"country": "all",
+				"image": "/images/complete_sports_icon.jpg"
+			},
+			{
+				"name": "sowetan live",
+				"url": "sowetanlive.co.za/sport",
+				"feed": "sowetanlive.co.za/rss/?publication=sowetan-live&section=sport",
+				"country": "all",
+				"image": "/images/complete_sports_icon.jpg"
+			},
+			{
+				"name": "news24",
+				"url": "news24.com/sport",
+				"feed": "feeds.capi24.com/v1/Search/articles/sport/soccer/rss",
+				"country": "south-africa",
 				"image": "/images/complete_sports_icon.jpg"
 			}
 		]

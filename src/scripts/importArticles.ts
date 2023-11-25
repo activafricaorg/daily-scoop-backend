@@ -42,10 +42,8 @@ const importArticles = async () => {
 				if (result.status === 'fulfilled') {
 					const value = result.value;
 					for (let item of value.feed.items) {
-						console.log(`Processed article: ${item.link} from ${value.publisher.name}`);
-
 						const categories: string[] = item.categories;
-						const lcCategories = categories.map(category => category.toLowerCase());
+						const lcCategories = categories && categories.length > 0 ? categories.map(category => category.toLowerCase()) : [];
 
 						console.log(`Processed article: ${item.link} from ${value.publisher.name}`);
 						articles.push({

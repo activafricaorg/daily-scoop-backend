@@ -10,7 +10,6 @@
     "delete": "npx ts-node src/scripts/deleteNews.ts",
     "category": "npx ts-node src/scripts/sortCategories.ts",
     "import": "npx ts-node src/scripts/importArticles.ts",
-    "importJobs": "npx ts-node src/scripts/importJobs.ts",
     "build": "rimraf ./build && tsc",
     "start": "npm run build && node build/index.js"
   },
