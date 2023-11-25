@@ -44,21 +44,24 @@ var router = express_1.default.Router();
 var article_model_1 = __importDefault(require("../models/article.model"));
 var topic_model_1 = __importDefault(require("../models/topic.model"));
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var per_page, page, args, result;
+    var topicFilter, per_page, page, args, result;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                topicFilter = {};
                 per_page = req.query && req.query.count ? req.query.count : 24;
                 page = req.query.page && req.query.page ? req.query.page : 1;
                 args = { limit: per_page, skip: per_page * (page - 1), sort: { articleCount: -1 } };
+                if (req.query.country)
+                    topicFilter.country = req.query.country;
                 return [4 /*yield*/, topic_model_1.default
-                        .find({}, null, args)
+                        .find(topicFilter, null, args)
                         .select({ "_id": 0, "__v": 0 })
                         .lean()
                         .exec()];
             case 1:
                 result = _a.sent();
-                if (result)
+                if (result && result.length > 0)
                     return [2 /*return*/, res.json(result)];
                 return [2 /*return*/, res.status(404).json({
                         status: "No record found"
@@ -67,26 +70,23 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
     });
 }); });
 router.get("/:slug", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var per_page, page, args, filter, tagArray, result;
+    var per_page, page, args, tagArray, result;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 per_page = req.query && req.query.count ? req.query.count : 24;
                 page = req.query.page && req.query.page ? req.query.page : 1;
                 args = { limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 } };
-                filter = {};
                 tagArray = (req.params.slug).split("-").join(" ");
-                filter = { tags: { $in: tagArray } };
                 return [4 /*yield*/, article_model_1.default
-                        .find(filter, null, args)
+                        .find({ tags: { $in: tagArray } }, null, args)
                         .select({ "_id": 0, "__v": 0 })
                         .lean()
                         .exec()];
             case 1:
                 result = _a.sent();
-                if (result) {
+                if (result)
                     return [2 /*return*/, res.json(result)];
-                }
                 return [2 /*return*/, res.status(404).json({
                         status: "No record found"
                     })];

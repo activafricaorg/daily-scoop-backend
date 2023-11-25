@@ -43,15 +43,18 @@ var express_1 = __importDefault(require("express"));
 var router = express_1.default.Router();
 var article_model_1 = __importDefault(require("../models/article.model"));
 router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var per_page, page, args, result;
+    var articleFilter, per_page, page, args, result;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
+                articleFilter = {};
                 per_page = req.query && req.query.count ? req.query.count : 24;
                 page = req.query.page && req.query.page ? req.query.page : 1;
                 args = { limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 } };
+                if (req.query.country)
+                    articleFilter.country = req.query.country;
                 return [4 /*yield*/, article_model_1.default
-                        .find({}, null, args)
+                        .find(articleFilter, null, args)
                         .select({ "_id": 0, "__v": 0 })
                         .lean()
                         .exec()];
@@ -76,9 +79,8 @@ router.get("/all", function (req, res) { return __awaiter(void 0, void 0, void 0
                     .exec()];
             case 1:
                 result = _a.sent();
-                if (result) {
+                if (result && result.length > 0)
                     return [2 /*return*/, res.json(result)];
-                }
                 return [2 /*return*/, res.status(404).json({
                         status: "No record found"
                     })];

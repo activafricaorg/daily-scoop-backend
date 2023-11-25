@@ -59,7 +59,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
                         .exec()];
             case 1:
                 result = _a.sent();
-                if (result && result.length >= 1)
+                if (result && result.length > 0)
                     return [2 /*return*/, res.json(result)];
                 return [2 /*return*/, res.status(404).json({
                         status: "No record found"

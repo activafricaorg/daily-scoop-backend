@@ -45,53 +45,53 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var category_model_1 = __importDefault(require("../models/category.model"));
 var config = require("../configs/db.configs");
 (function () { return __awaiter(void 0, void 0, void 0, function () {
-    var error_1;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                if (!(mongoose_1.default.connection.readyState == 0)) return [3 /*break*/, 4];
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
+        if (mongoose_1.default.connection.readyState == 0) {
+            try {
                 // Connect the client to the server
-                return [4 /*yield*/, mongoose_1.default.connect("".concat(config.uri, "/"), { dbName: config.database })];
-            case 2:
-                // Connect the client to the server
-                _a.sent();
-                console.log("Connection to MongoDB started successfully!");
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _a.sent();
-                console.error('Unable to connect to database -> ', error_1);
-                process.exit();
-                return [3 /*break*/, 4];
-            case 4:
-                promises_1.default.readFile("./categories.json", "utf-8")
-                    .then(function (categoriesJSON) { return __awaiter(void 0, void 0, void 0, function () {
-                    var categories;
+                mongoose_1.default.connect("".concat(config.uri, "/"), { dbName: config.database })
+                    .then(function () { return __awaiter(void 0, void 0, void 0, function () {
                     return __generator(this, function (_a) {
-                        categories = JSON.parse(categoriesJSON);
-                        category_model_1.default.insertMany(categories)
-                            .then(function () { return __awaiter(void 0, void 0, void 0, function () {
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        console.log("Successfully added bulk category document to category collection");
-                                        return [4 /*yield*/, mongoose_1.default.connection.close()];
-                                    case 1:
-                                        _a.sent();
-                                        console.log("Connection to MongoDB closed");
+                        switch (_a.label) {
+                            case 0: return [4 /*yield*/, category_model_1.default.deleteMany({})];
+                            case 1:
+                                _a.sent();
+                                promises_1.default.readFile("./categories.json", "utf-8")
+                                    .then(function (categoriesJSON) { return __awaiter(void 0, void 0, void 0, function () {
+                                    var categories;
+                                    return __generator(this, function (_a) {
+                                        categories = JSON.parse(categoriesJSON);
+                                        console.log(categories);
+                                        category_model_1.default.insertMany(categories)
+                                            .then(function () { return __awaiter(void 0, void 0, void 0, function () {
+                                            return __generator(this, function (_a) {
+                                                switch (_a.label) {
+                                                    case 0:
+                                                        console.log("Successfully added bulk category document to category collection");
+                                                        return [4 /*yield*/, mongoose_1.default.connection.close()];
+                                                    case 1:
+                                                        _a.sent();
+                                                        console.log("Connection to MongoDB closed");
+                                                        return [2 /*return*/];
+                                                }
+                                            });
+                                        }); })
+                                            .catch(function (err) {
+                                            console.error("Error adding bulk category documents -> ".concat(err));
+                                        });
                                         return [2 /*return*/];
-                                }
-                            });
-                        }); })
-                            .catch(function (err) {
-                            console.error("Error adding bulk category documents -> ".concat(err));
-                        });
-                        return [2 /*return*/];
+                                    });
+                                }); });
+                                return [2 /*return*/];
+                        }
                     });
                 }); });
-                return [2 /*return*/];
+            }
+            catch (error) {
+                console.error('Unable to connect to database -> ', error);
+                process.exit();
+            }
         }
+        return [2 /*return*/];
     });
 }); })();

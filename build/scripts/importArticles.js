@@ -100,9 +100,8 @@ var importArticles = function () { return __awaiter(void 0, void 0, void 0, func
                                 value = result.value;
                                 for (_a = 0, _b = value.feed.items; _a < _b.length; _a++) {
                                     item = _b[_a];
-                                    console.log("Processed article: ".concat(item.link, " from ").concat(value.publisher.name));
                                     categories_1 = item.categories;
-                                    lcCategories = categories_1.map(function (category) { return category.toLowerCase(); });
+                                    lcCategories = categories_1 && categories_1.length > 0 ? categories_1.map(function (category) { return category.toLowerCase(); }) : [];
                                     console.log("Processed article: ".concat(item.link, " from ").concat(value.publisher.name));
                                     articles.push({
                                         title: item.title,

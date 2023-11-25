@@ -92,7 +92,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
                     status: "No record found"
                 })];
             case 7:
-                if (publishers.length >= 1)
+                if (publishers && publishers.length > 0)
                     return [2 /*return*/, res.json(publishers)];
                 return [2 /*return*/, res.status(404).json({
                         status: "No record found"
