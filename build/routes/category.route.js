@@ -66,7 +66,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
     });
 }); });
 router.get("/:category", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var result, categoryFilter, category, per_page, page, args, _a;
+    var result, categoryFilter, countryFilter, category, per_page, page, args, _a;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0: return [4 /*yield*/, category_model_1.default
@@ -78,19 +78,25 @@ router.get("/:category", function (req, res) { return __awaiter(void 0, void 0, 
                 result = _b.sent();
                 if (!(result && Object.keys(result).length > 0)) return [3 /*break*/, 3];
                 categoryFilter = {};
+                countryFilter = {};
                 category = result;
                 per_page = req.query && req.query.count ? req.query.count : 24;
                 page = req.query.page && req.query.page ? req.query.page : 1;
                 args = { limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 } };
                 categoryFilter.category = result.name;
                 if (req.query.country)
-                    categoryFilter.country = req.query.country;
+                    countryFilter.country = req.query.country;
                 _a = category;
                 return [4 /*yield*/, article_model_1.default
                         .find({
-                        $or: [
+                        $and: [
                             categoryFilter,
-                            { country: 'all' },
+                            {
+                                $or: [
+                                    countryFilter,
+                                    { country: 'all' },
+                                ]
+                            }
                         ]
                     }, null, args)
                         .select({ "_id": 0, "__v": 0 })

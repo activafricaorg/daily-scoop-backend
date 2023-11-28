@@ -29,20 +29,25 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 
 	if (result && Object.keys(result).length > 0) {
 		const categoryFilter: any = {};
+		const countryFilter: any = {};
 		const category: CategoryTypes = result;
 		const per_page: any = req.query && req.query.count ? req.query.count : 24;
 		const page: any = req.query.page && req.query.page ? req.query.page : 1;
 		const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 
 		categoryFilter.category = result.name;
-		if (req.query.country) categoryFilter.country = req.query.country;
+		if (req.query.country) countryFilter.country = req.query.country;
 
 		category.articles = await ArticleModel
 			.find({
-				$or: [
+				$and: [
 					categoryFilter,
-					{ country: 'all' },
-				]
+					{
+						$or: [
+							countryFilter,
+							{ country: 'all' },
+						]
+					}]
 			}, null, args)
 			.select({"_id": 0, "__v": 0})
 			.exec();
