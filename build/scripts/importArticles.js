@@ -57,7 +57,7 @@ var importArticles = function () { return __awaiter(void 0, void 0, void 0, func
                         .exec()];
             case 1:
                 categories = _a.sent();
-                categories.filter(function (category) { return category.name !== 'tech'; })
+                categories
                     .forEach(function (category) {
                     var _loop_1 = function (publisher) {
                         promises.push(new Promise(function (resolve, reject) { return __awaiter(void 0, void 0, void 0, function () {
