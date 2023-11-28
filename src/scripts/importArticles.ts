@@ -14,7 +14,7 @@ const importArticles = async () => {
 		.populate('publishers')
 		.exec();
 
-	categories.filter(category => category.name !== 'tech')
+	categories
 		.forEach((category: CategoryTypes) => {
 			for (let publisher of category.publishers) {
 				promises.push(
