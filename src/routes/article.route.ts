@@ -11,7 +11,12 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 
 	if (req.query.country) articleFilter.country = req.query.country;
 	const result: ArticleTypes[] | [] = await ArticleModel
-		.find(articleFilter, null, args)
+		.find({
+			$and: [
+				articleFilter,
+				{ country: 'all' },
+			]
+		}, null, args)
 		.select({ "_id": 0, "__v": 0 })
 		.lean()
 		.exec();

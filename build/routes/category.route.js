@@ -87,7 +87,12 @@ router.get("/:category", function (req, res) { return __awaiter(void 0, void 0, 
                     categoryFilter.country = req.query.country;
                 _a = category;
                 return [4 /*yield*/, article_model_1.default
-                        .find(categoryFilter, null, args)
+                        .find({
+                        $and: [
+                            categoryFilter,
+                            { country: 'all' },
+                        ]
+                    }, null, args)
                         .select({ "_id": 0, "__v": 0 })
                         .exec()];
             case 2:

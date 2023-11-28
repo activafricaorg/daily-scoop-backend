@@ -38,7 +38,12 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 		if (req.query.country) categoryFilter.country = req.query.country;
 
 		category.articles = await ArticleModel
-			.find(categoryFilter, null, args)
+			.find({
+				$and: [
+					categoryFilter,
+					{ country: 'all' },
+				]
+			}, null, args)
 			.select({"_id": 0, "__v": 0})
 			.exec();
 
