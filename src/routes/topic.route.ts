@@ -14,7 +14,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	if (req.query.country) topicFilter.country = req.query.country;
 	const result: TopicTypes[] | null = await TopicModel
 		.find({
-			$and: [
+			$or: [
 				topicFilter,
 				{ country: 'all' },
 			]

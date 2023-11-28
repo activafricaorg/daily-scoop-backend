@@ -12,7 +12,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 	if (req.query.country) articleFilter.country = req.query.country;
 	const result: ArticleTypes[] | [] = await ArticleModel
 		.find({
-			$and: [
+			$or: [
 				articleFilter,
 				{ country: 'all' },
 			]

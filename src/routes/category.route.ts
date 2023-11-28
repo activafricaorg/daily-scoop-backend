@@ -39,7 +39,7 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 
 		category.articles = await ArticleModel
 			.find({
-				$and: [
+				$or: [
 					categoryFilter,
 					{ country: 'all' },
 				]

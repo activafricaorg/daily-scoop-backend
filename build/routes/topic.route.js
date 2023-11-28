@@ -56,7 +56,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
                     topicFilter.country = req.query.country;
                 return [4 /*yield*/, topic_model_1.default
                         .find({
-                        $and: [
+                        $or: [
                             topicFilter,
                             { country: 'all' },
                         ]
