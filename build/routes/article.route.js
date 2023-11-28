@@ -62,9 +62,7 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 result = _a.sent();
                 if (result && result.length > 0)
                     return [2 /*return*/, res.json(result)];
-                return [2 /*return*/, res.status(404).json({
-                        status: "No record found"
-                    })];
+                return [2 /*return*/, res.status(404).json([])];
         }
     });
 }); });
@@ -81,9 +79,7 @@ router.get("/all", function (req, res) { return __awaiter(void 0, void 0, void 0
                 result = _a.sent();
                 if (result && result.length > 0)
                     return [2 /*return*/, res.json(result)];
-                return [2 /*return*/, res.status(404).json({
-                        status: "No record found"
-                    })];
+                return [2 /*return*/, res.status(404).json([])];
         }
     });
 }); });
@@ -112,9 +108,7 @@ router.get("/:guid", function (req, res) { return __awaiter(void 0, void 0, void
             case 2:
                 _a.related = _b.sent();
                 return [2 /*return*/, res.json(result)];
-            case 3: return [2 /*return*/, res.status(404).json({
-                    status: "No record found"
-                })];
+            case 3: return [2 /*return*/, res.status(404).json([])];
         }
     });
 }); });

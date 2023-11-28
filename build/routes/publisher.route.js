@@ -88,15 +88,11 @@ router.get("/", function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 _i++;
                 return [3 /*break*/, 2];
             case 5: return [2 /*return*/, res.json(all)];
-            case 6: return [2 /*return*/, res.status(404).json({
-                    status: "No record found"
-                })];
+            case 6: return [2 /*return*/, res.status(404).json([])];
             case 7:
                 if (publishers && publishers.length > 0)
                     return [2 /*return*/, res.json(publishers)];
-                return [2 /*return*/, res.status(404).json({
-                        status: "No record found"
-                    })];
+                return [2 /*return*/, res.status(404).json([])];
         }
     });
 }); });
