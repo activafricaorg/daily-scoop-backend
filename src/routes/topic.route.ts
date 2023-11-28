@@ -19,16 +19,13 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		.exec();
 
 	if (result && result.length > 0) return res.json(result);
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 router.get("/:slug", async (req: Request, res: Response): Promise<Response> => {
 	const per_page: any = req.query && req.query.count ? req.query.count : 24;
 	const page: any = req.query.page && req.query.page ? req.query.page : 1;
 	const args = { limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
-
 
 	const tagArray = (req.params.slug).split("-").join(" ");
 	const result: ArticleTypes[] | null = await ArticleModel
@@ -38,9 +35,7 @@ router.get("/:slug", async (req: Request, res: Response): Promise<Response> => {
 		.exec();
 
 	if (result) return res.json(result);
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 export default router;

@@ -17,9 +17,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		.exec();
 
 	if (result && result.length > 0) return res.json(result);
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 router.get("/all", async (req: Request, res: Response): Promise<Response> => {
@@ -30,9 +28,7 @@ router.get("/all", async (req: Request, res: Response): Promise<Response> => {
 		.exec();
 
 	if (result && result.length > 0) return res.json(result);
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 router.get("/:guid", async (req: Request, res: Response): Promise<Response> => {
@@ -56,9 +52,7 @@ router.get("/:guid", async (req: Request, res: Response): Promise<Response> => {
 		return res.json(result);
 	}
 
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 export default router;

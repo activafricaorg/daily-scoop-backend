@@ -43,15 +43,11 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 			return res.json(all);
 		}
 
-		return res.status(404).json({
-			status: "No record found"
-		});
+		return res.status(404).json([]);
 	}
 
 	if (publishers && publishers.length > 0) return res.json(publishers);
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 export default router;

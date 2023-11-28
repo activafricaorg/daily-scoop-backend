@@ -17,9 +17,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 		.exec();
 
 	if ( result && result.length > 0) return res.json(result);
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 router.get("/:category", async (req: Request, res:Response): Promise<Response> => {
@@ -30,22 +28,24 @@ router.get("/:category", async (req: Request, res:Response): Promise<Response> =
 		.exec();
 
 	if (result && Object.keys(result).length > 0) {
+		const categoryFilter: any = {};
 		const category: CategoryTypes = result;
 		const per_page: any = req.query && req.query.count ? req.query.count : 24;
 		const page: any = req.query.page && req.query.page ? req.query.page : 1;
 		const args = {limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 
+		categoryFilter.category = result.name;
+		if (req.query.country) categoryFilter.country = req.query.country;
+
 		category.articles = await ArticleModel
-			.find({category: result.name}, null, args)
+			.find(categoryFilter, null, args)
 			.select({"_id": 0, "__v": 0})
 			.exec();
 
 		return res.json(category);
 	}
 
-	return res.status(404).json({
-		status: "No record found"
-	});
+	return res.status(404).json([]);
 });
 
 export default router;
