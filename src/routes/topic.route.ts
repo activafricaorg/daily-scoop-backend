@@ -29,7 +29,7 @@ router.get("/", async (req: Request, res: Response): Promise<Response> => {
 
 router.get("/:slug", async (req: Request, res: Response): Promise<Response> => {
 	const per_page: any = req.query && req.query.count ? req.query.count : 24;
-	const page: any = req.query.page && req.query.page ? req.query.page : 1;
+	const page: any = req.query && req.query.page ? req.query.page : 1;
 	const args = { limit: per_page, skip: per_page * (page - 1), sort: { articleDate: -1 }};
 
 	const tagArray = (req.params.slug).split("-").join(" ");

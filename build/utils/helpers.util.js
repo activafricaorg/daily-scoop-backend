@@ -4,7 +4,7 @@
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.slugifyText = void 0;
-var slugifyText = function (input) {
+const slugifyText = (input) => {
     return input
         .toLowerCase()
         .trim()

@@ -2,6 +2,7 @@ import "./utils/env.util";
 import express, { Express } from "express";
 import mongoose from "mongoose";
 import cron from 'node-cron';
+import bodyParser from "body-parser";
 import cors from 'cors';
 import deleteNews from "./scripts/deleteNews";
 import importArticles from "./scripts/importArticles";
@@ -9,7 +10,9 @@ import article from "./routes/article.route";
 import category from "./routes/category.route";
 import publisher from "./routes/publisher.route";
 import topic from "./routes/topic.route";
+import token from "./routes/token.route";
 import sortTopics from "./scripts/sortTopics";
+import TokenModel from "./models/token.model";
 const config = require("./configs/db.configs");
 
 // Express
@@ -19,11 +22,16 @@ const port = process.env.PORT || 4001;
 // Cors
 app.use(cors());
 
+// Incoming request body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 // Routes
 app.use("/article", article);
 app.use("/category", category);
 app.use("/publisher", publisher);
 app.use("/topic", topic);
+app.use("/token", token);
 
 app.get('/', (req, res) => {
 	res.json({
@@ -52,10 +60,15 @@ app.get('/', (req, res) => {
 			await deleteNews();
 		});
 
-		// 3. Cron job to re-compile topics
+		// 3. Cron job to re-compile topics every 25 minutes
 		cron.schedule('*/25 * * * *', async () => {
 			await sortTopics();
 		});
+
+		// Create token collection
+		// TokenModel.createCollection().then(function (collection) {
+		// 	console.log('Token Collection is created!');
+		// });
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);
 	}
