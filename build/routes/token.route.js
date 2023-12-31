@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const token_model_1 = __importDefault(require("../models/token.model"));
 router.get("/", async (req, res) => {
-    const result = await token_model_1.default.findOne({});
+    const result = await token_model_1.default.find({});
     if (result && result.length > 0)
         return res.json(result);
     return res.status(404).json([]);

@@ -17,6 +17,7 @@ const publisher_route_1 = __importDefault(require("./routes/publisher.route"));
 const topic_route_1 = __importDefault(require("./routes/topic.route"));
 const token_route_1 = __importDefault(require("./routes/token.route"));
 const sortTopics_1 = __importDefault(require("./scripts/sortTopics"));
+const token_model_1 = __importDefault(require("./models/token.model"));
 const config = require("./configs/db.configs");
 // Express
 const app = (0, express_1.default)();
@@ -58,10 +59,14 @@ app.get('/', (req, res) => {
         node_cron_1.default.schedule('*/25 * * * *', async () => {
             await (0, sortTopics_1.default)();
         });
+        // 4. Daily Push Notifications
+        // await DailyPushNotification();
+        // await sendPushMessages("Good morning sunshine 🌞", "Here are your early morning news from your daily news platforms.", { route: "Feed", params: {screen: 'News' }});
+        // await sendPushMessages("Morning News 🌞", "Before you start your day, catchup on the morning news from your favourite news sources.", { route: "Feed", params: { screen: 'News' }});
         // Create token collection
-        // TokenModel.createCollection().then(function (collection) {
-        // 	console.log('Token Collection is created!');
-        // });
+        token_model_1.default.createCollection().then(function (collection) {
+            console.log('Token Collection is created!');
+        });
     }
     catch (error) {
         console.error('Unable to connect to database -> ', error);

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const TokenSchema = new mongoose_1.Schema({
     applicationId: {
-        type: Number,
+        type: String,
         unique: true,
         required: true
     },
