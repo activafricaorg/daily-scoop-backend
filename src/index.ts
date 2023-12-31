@@ -74,9 +74,9 @@ app.get('/', (req, res) => {
 		// await sendPushMessages("Morning News 🌞", "Before you start your day, catchup on the morning news from your favourite news sources.", { route: "Feed", params: { screen: 'News' }});
 
 		// Create token collection
-		TokenModel.createCollection().then(function (collection) {
-			console.log('Token Collection is created!');
-		});
+		// TokenModel.createCollection().then(function (collection) {
+		// 	console.log('Token Collection is created!');
+		// });
 
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);
