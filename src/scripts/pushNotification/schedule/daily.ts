@@ -15,7 +15,7 @@ const DailyPushNotification = async () => {
 
 	// 3. Cron job every day at 9pm
 	cron.schedule('0 20 * * *', async () => {
-		await sendPushMessages("Evening News 🌙", "It's the end of the day, but news doesn't stop. Check out more evening news from popular news sources", { route: "Feed", params: { screen: 'News' }});
+		await sendPushMessages("Evening News 🌙", "It's the end of the day, check out more news from popular news sources", { route: "Feed", params: { screen: 'News' }});
 	});
 };
 
