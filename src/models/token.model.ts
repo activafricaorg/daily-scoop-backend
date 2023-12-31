@@ -3,7 +3,7 @@ import { TokenTypes } from "../types/token";
 
 const TokenSchema = new Schema<TokenTypes>({
 	applicationId: {
-		type: Number,
+		type: String,
 		unique: true,
 		required: true
 	},

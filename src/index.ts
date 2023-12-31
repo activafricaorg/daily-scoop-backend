@@ -12,7 +12,9 @@ import publisher from "./routes/publisher.route";
 import topic from "./routes/topic.route";
 import token from "./routes/token.route";
 import sortTopics from "./scripts/sortTopics";
+import DailyPushNotification from "./scripts/pushNotification/schedule/daily";
 import TokenModel from "./models/token.model";
+import sendPushMessages from "./scripts/pushNotification/sendPushMessages";
 const config = require("./configs/db.configs");
 
 // Express
@@ -65,10 +67,16 @@ app.get('/', (req, res) => {
 			await sortTopics();
 		});
 
+		// 4. Daily Push Notifications
+		// await DailyPushNotification();
+
+		// await sendPushMessages("Good morning sunshine 🌞", "Here are your early morning news from your daily news platforms.", { route: "Feed", params: {screen: 'News' }});
+
 		// Create token collection
-		// TokenModel.createCollection().then(function (collection) {
-		// 	console.log('Token Collection is created!');
-		// });
+		TokenModel.createCollection().then(function (collection) {
+			console.log('Token Collection is created!');
+		});
+
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);
 	}
