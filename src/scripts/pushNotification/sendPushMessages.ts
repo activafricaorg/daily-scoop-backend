@@ -10,7 +10,7 @@ const sendPushMessages = async(title: string, body: string, data?: CategoryDataT
 	const rawTokens = await TokenModel.find().select({'fcmToken': 1, '_id': 0});
 
 	// Filter out fcmTokens
-	const tokens: string[] = ["ExponentPushToken[Gn59GFEMviULScGMogyQaL]"];
+	const tokens: string[] = [];
 	rawTokens.forEach((token) => tokens.push(token.fcmToken));
 
 	// Create the messages that you want to send to clients
