@@ -1,6 +1,6 @@
 import TokenModel from "../../models/token.model";
 import { Expo, ExpoPushMessage } from 'expo-server-sdk';
-import {CategoryDataTypes, TopicDataTypes, PublisherDataTypes} from "../../types/push";
+import { CategoryDataTypes, TopicDataTypes, PublisherDataTypes } from "../../types/push";
 
 // initialize Expo
 let expo = new Expo({ accessToken: "w7KHALZRy3a9XHmv2U-UUWy6XewLaqJ7oT5Vi8X1" });
@@ -11,11 +11,10 @@ const sendPushMessages = async(title: string, body: string, data?: CategoryDataT
 
 	// Filter out fcmTokens
 	const tokens: string[] = ["ExponentPushToken[Gn59GFEMviULScGMogyQaL]"];
-	// rawTokens.forEach((token) => tokens.push(token.fcmToken));
+	rawTokens.forEach((token) => tokens.push(token.fcmToken));
 
 	// Create the messages that you want to send to clients
 	let messages: ExpoPushMessage[] = [];
-
 
 	for (let pushToken of tokens) {
 		// Check that all your push tokens appear to be valid Expo push tokens
@@ -48,7 +47,7 @@ const sendPushMessages = async(title: string, body: string, data?: CategoryDataT
 	for (let chunk of chunks) {
 		try {
 			let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
-			console.log(ticketChunk);
+			// console.log(ticketChunk);
 			tickets.push(...ticketChunk);
 			// NOTE: If a ticket contains an error code in ticket.details.error, you
 			// must handle it appropriately. The error codes are listed in the Expo
