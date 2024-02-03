@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import { ArticleTypes } from "../types/article";
 import { TopicTypes } from "../types/topic";
+
 const router = express.Router();
 import ArticleModel from "../models/article.model";
 import TopicModel from "../models/topic.model";

@@ -11,10 +11,9 @@ import category from "./routes/category.route";
 import publisher from "./routes/publisher.route";
 import topic from "./routes/topic.route";
 import token from "./routes/token.route";
+import pushNotification from "./routes/pushNotification.route";
 import sortTopics from "./scripts/sortTopics";
 import DailyPushNotification from "./scripts/pushNotification/schedule/daily";
-import TokenModel from "./models/token.model";
-import sendPushMessages from "./scripts/pushNotification/sendPushMessages";
 const config = require("./configs/db.configs");
 
 // Express
@@ -34,6 +33,7 @@ app.use("/category", category);
 app.use("/publisher", publisher);
 app.use("/topic", topic);
 app.use("/token", token);
+app.use("/pushNotification", pushNotification);
 
 app.get('/', (req, res) => {
 	res.json({
@@ -70,13 +70,13 @@ app.get('/', (req, res) => {
 		// 4. Daily Push Notifications
 		// await DailyPushNotification();
 
-		await sendPushMessages("Good morning sunshine 🌞", "Here are your early morning news from your daily news platforms.", { route: "Feed", params: {screen: 'News' }});
+		// await sendPushMessages("Good morning sunshine 🌞", "Here are your early morning news from your daily news platforms.", { route: "Feed", params: {screen: 'News' }});
 		// await sendPushMessages("Morning News 🌞", "Before you start your day, catchup on the morning news from your favourite news sources.", { route: "Feed", params: { screen: 'News' }});
 
 		// Create token collection
-		TokenModel.createCollection().then(function (collection) {
-			console.log('Token Collection is created!');
-		});
+		// TokenModel.createCollection().then(function (collection) {
+		// 	console.log('Token Collection is created!');
+		// });
 
 	} catch (error: Error | any) {
 		console.error('Unable to connect to database -> ', error);

@@ -45,10 +45,6 @@ const sendPushMessages = async(title: string, body: string, data?: CategoryDataT
 	// different strategies you could use. A simple one is to send one chunk at a
 	// time, which nicely spreads the load out over time:
 
-	// @TODO
-	// 1. Create model for tickets and store ticket info
-	// 2. Run a cron job that deletes devices with bad tickets
-
 	for (let chunk of chunks) {
 		try {
 			let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
@@ -62,5 +58,7 @@ const sendPushMessages = async(title: string, body: string, data?: CategoryDataT
 			console.error(error);
 		}
 	}
+
+	return tickets;
 }
 export default sendPushMessages;
