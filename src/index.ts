@@ -68,7 +68,7 @@ app.get('/', (req, res) => {
 		});
 
 		// 4. Daily Push Notifications
-		// await DailyPushNotification();
+		await DailyPushNotification();
 
 		// await sendPushMessages("Good morning sunshine 🌞", "Here are your early morning news from your daily news platforms.", { route: "Feed", params: {screen: 'News' }});
 		// await sendPushMessages("Morning News 🌞", "Before you start your day, catchup on the morning news from your favourite news sources.", { route: "Feed", params: { screen: 'News' }});
